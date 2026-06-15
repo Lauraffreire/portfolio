@@ -399,7 +399,7 @@ function setupForms() {
             else if (curScreen === 3 && window.graphHideStat) window.graphHideStat(1200);
             return;
         }
-        const mx = controlPoint ? 1 - controlPoint.x : formsMaskPoint.x;
+        const mx = formsMaskPoint ? formsMaskPoint.x : 1 - controlPoint.x;
 
         if (curScreen === 1) {
             const idx = mx < .25 ? 0 : mx < .50 ? 1 : mx < .75 ? 2 : 3;

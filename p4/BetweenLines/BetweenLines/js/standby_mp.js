@@ -58,6 +58,22 @@ function sbResumePresenceIfCentered() {
     if (sbLastInCenter) sbSignalPresent();
 }
 
+function sbHandleControlPoint(point) {
+    if (!point) {
+        if (typeof sbSetProximityPosition === 'function') sbSetProximityPosition(0.5, 0.5, false);
+        sbSignalAbsent();
+        return;
+    }
+
+    if (typeof sbSetProximityPosition === 'function') sbSetProximityPosition(1 - point.x, point.y, true);
+
+    const inCenterH = point.x >= 0.24 && point.x <= 0.76;
+    const inCenterV = point.y >= 0.04 && point.y <= 0.96;
+
+    if (inCenterH && inCenterV) sbSignalPresent();
+    else                        sbSignalAbsent();
+}
+
 // pessoa detetada no centro — inicia ou mantém a contagem
 function sbSignalPresent() {
     sbLastInCenter = true;
@@ -153,45 +169,8 @@ function sbSetupMP() {
     });
     pose.onResults(r => {
         if (!sbActive) return;
-        if (!r.poseLandmarks) {
-            if (sbMaskPoint) {
-                const mx = 1 - sbMaskPoint.x;
-                if (typeof sbSetProximityPosition === 'function') sbSetProximityPosition(mx, sbMaskPoint.y, true);
-                const inCenterH = sbMaskPoint.x >= 0.24 && sbMaskPoint.x <= 0.76;
-                const inCenterV = sbMaskPoint.y >= 0.04 && sbMaskPoint.y <= 0.96;
-                if (inCenterH && inCenterV) sbSignalPresent();
-                else                         sbSignalAbsent();
-            } else {
-                if (typeof sbSetProximityPosition === 'function') sbSetProximityPosition(0.5, 0.5, false);
-                sbSignalAbsent();
-            }
-            return;
-        }
-
-        const center = getPoseControlPoint(r.poseLandmarks);
-        // usar ombros e ancas para calcular a posição do centro do corpo
-        if (!center) {
-            if (sbMaskPoint) {
-                const mx = 1 - sbMaskPoint.x;
-                if (typeof sbSetProximityPosition === 'function') sbSetProximityPosition(mx, sbMaskPoint.y, true);
-                const inCenterH = sbMaskPoint.x >= 0.24 && sbMaskPoint.x <= 0.76;
-                const inCenterV = sbMaskPoint.y >= 0.04 && sbMaskPoint.y <= 0.96;
-                if (inCenterH && inCenterV) sbSignalPresent();
-                else                         sbSignalAbsent();
-            } else {
-                if (typeof sbSetProximityPosition === 'function') sbSetProximityPosition(0.5, 0.5, false);
-                sbSignalAbsent();
-            }
-            return;
-        }
-
-        if (typeof sbSetProximityPosition === 'function') sbSetProximityPosition(1 - center.x, center.y, true);
-
-        const inCenterH = center.x >= 0.24 && center.x <= 0.76;
-        const inCenterV = center.y >= 0.04 && center.y <= 0.96;
-
-        if (inCenterH && inCenterV) sbSignalPresent();
-        else                         sbSignalAbsent();
+        const center = sbMaskPoint || getPoseControlPoint(r.poseLandmarks);
+        sbHandleControlPoint(center);
     });
 
     // loop da câmara
