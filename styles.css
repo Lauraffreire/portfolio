@@ -85,7 +85,7 @@ body.header-scrolled .topbar {
 }
 
 body.header-scrolled .topbar a {
-  color: var(--paper);
+  color: var(--ink);
 }
 
 .brand {
