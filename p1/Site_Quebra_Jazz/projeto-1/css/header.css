@@ -85,3 +85,34 @@ body {
 .nav-list ul li a:hover:after {
     width:100%;
 }
+
+@media (max-width: 760px) {
+    .header-nav-bar {
+        height: auto;
+        min-height: 92px;
+        padding: 14px 12px;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .logo img {
+        width: 34px;
+        margin: 8px 4px;
+    }
+
+    .nav-list {
+        justify-content: flex-end;
+    }
+
+    .nav-list ul {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 10px 14px;
+        margin-right: 0;
+    }
+
+    .nav-list ul li {
+        margin: 0;
+        font-size: 0.82rem;
+    }
+}

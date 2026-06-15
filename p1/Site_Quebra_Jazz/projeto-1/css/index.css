@@ -368,3 +368,189 @@ body{
 .mapa>h2{
     padding:40px;
 }
+
+@media (max-width: 760px) {
+    .letras {
+        height: 760px;
+        overflow: hidden;
+    }
+
+    .letrasEsquerda {
+        width: 82px;
+    }
+
+    .letras>.letrasEsquerda>img {
+        width: 48px;
+        height: 48px;
+        margin: 12px 18px;
+    }
+
+    .mexeA,
+    .mexeRA,
+    .mexeBRA,
+    .mexeEBRA,
+    .mexeZZ,
+    .mexeJAZZ {
+        height: auto;
+        max-width: calc(100vw - 120px);
+    }
+
+    .mexeA {
+        width: 52px;
+        top: 320px;
+    }
+
+    .mexeEBRA,
+    .mexeJAZZ {
+        width: 210px;
+    }
+
+    .mexeBRA {
+        width: 160px;
+    }
+
+    .mexeRA,
+    .mexeZZ {
+        width: 110px;
+    }
+
+    @keyframes moverA {
+        from { left: 96px; }
+        to { left: calc(100vw - 92px); }
+    }
+
+    @keyframes moverEBRA {
+        from { left: 96px; }
+        to { left: calc(100vw - 230px); }
+    }
+
+    @keyframes moverBRA {
+        from { left: calc(100vw - 180px); }
+        to { left: 96px; }
+    }
+
+    @keyframes moverRA {
+        from { left: calc(100vw - 130px); }
+        to { left: 96px; }
+    }
+
+    @keyframes moverZZ {
+        from { left: 96px; }
+        to { left: calc(100vw - 130px); }
+    }
+
+    @keyframes moverJAZZ {
+        from { left: 96px; }
+        to { left: calc(100vw - 230px); }
+    }
+
+    #tecla1,
+    #tecla2,
+    #tecla3,
+    #tecla4,
+    #tecla5,
+    #tecla6,
+    #tecla7,
+    #tecla8,
+    #tecla9,
+    #tecla10 {
+        display: none;
+    }
+
+    .containerArtista {
+        margin-top: 36px;
+        padding: 0 16px 32px;
+        gap: 28px;
+    }
+
+    .artistaDireita,
+    .artistaEsquerda {
+        width: 100%;
+        height: auto;
+        min-height: 0;
+        padding: 24px 0 28px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.26);
+        display: grid;
+        gap: 10px;
+    }
+
+    .artistaDireita>h3,
+    .artistaEsquerda>h3,
+    .horarioDireita,
+    .horarioEsquerda,
+    .nomeDireita,
+    .nomeEsquerda,
+    .subnomeDireita,
+    .subnomeEsquerda {
+        position: static;
+        left: auto;
+        right: auto;
+        top: auto;
+    }
+
+    .artistaDireita>h3,
+    .artistaEsquerda>h3 {
+        font-size: clamp(2rem, 12vw, 3.4rem);
+        line-height: 0.95;
+    }
+
+    .horarioDireita,
+    .horarioEsquerda {
+        font-size: 1rem;
+        line-height: 1.35;
+    }
+
+    .nomeDireita,
+    .nomeEsquerda {
+        font-size: 1.25rem;
+        line-height: 1.15;
+    }
+
+    .subnomeDireita,
+    .subnomeEsquerda {
+        font-size: 0.98rem;
+        line-height: 1.35;
+    }
+
+    #imgLuis,
+    #imgMario,
+    #imgMano,
+    #imgChef,
+    #imgMarta,
+    #imgAntonio,
+    #imgSusana,
+    #imgTejo,
+    #imgOrq {
+        position: static;
+        width: 100%;
+        height: auto;
+        max-height: 260px;
+        object-fit: contain;
+        order: -1;
+    }
+
+    #descricaoFestival {
+        margin: 54px 18px;
+        font-size: 1rem;
+        line-height: 1.45;
+        text-align: left;
+    }
+
+    #descricaoFestival>p {
+        padding: 12px 0;
+    }
+
+    .mapa {
+        padding: 0 16px 80px;
+    }
+
+    .mapa>h2 {
+        padding: 24px 0;
+        font-size: 2rem;
+    }
+
+    .mapa iframe {
+        width: 100%;
+        height: 320px;
+    }
+}

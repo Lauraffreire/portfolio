@@ -82,3 +82,20 @@ footer {
     font-weight: 400;
     margin:5px;
 }
+
+@media (max-width: 760px) {
+    .footer-container {
+        padding: 42px 18px 18px;
+    }
+
+    .footer-nav ul {
+        flex-wrap: wrap;
+        gap: 12px 18px;
+    }
+
+    .footer-nav ul li a {
+        display: inline-block;
+        margin: 0;
+        font-size: 0.9rem;
+    }
+}

@@ -52,17 +52,19 @@ body {
     align-items: center;
     gap: 10px;
     z-index: 100;
+    padding: clamp(42px, 7vw, 76px) 8% !important;
 }
 
 .text-loop img {
-    width: 100%;
+    width: min(38vw, 460px);
     height: auto;
 }
 
 .linha1, .linha2 {
     display: flex;
     justify-content: center;
-    gap: 5px;
+    gap: clamp(18px, 5vw, 64px);
+    width: 100%;
 }
 
 /*----- FIM HEADER/NAVBAR --------*/
@@ -498,4 +500,20 @@ footer {
     letter-spacing: 1px;
     font-weight: 400;
     margin: 0 5px;
+}
+
+@media (max-width: 760px) {
+    .text-loop {
+        padding: 34px 18px !important;
+        gap: 8px;
+    }
+
+    .text-loop img {
+        width: min(40vw, 150px);
+    }
+
+    .linha1,
+    .linha2 {
+        gap: 18px;
+    }
 }
