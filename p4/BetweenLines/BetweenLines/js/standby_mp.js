@@ -2,7 +2,7 @@
 const sbVideoEl = document.getElementById('videoEl');
 
 // configuração do timer de presença
-const PRESENCE_SEC  = 5;     // segundos necessários para avançar
+const PRESENCE_SEC  = 8;     // segundos necessários para avançar
 const ABSENCE_GRACE = 1500;  // ms de tolerância antes de resetar
 
 let presenceTimer    = null;
