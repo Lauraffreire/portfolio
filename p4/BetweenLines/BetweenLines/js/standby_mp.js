@@ -10,7 +10,41 @@ let presenceStart    = null;
 let absenceGrace     = null;
 let progressInterval = null;
 let sbLastInCenter   = false;
+let sbMaskPoint      = null;
 
+const sbMaskCanvas = document.createElement('canvas');
+const sbMaskCtx = sbMaskCanvas.getContext('2d', { willReadFrequently: true });
+
+function sbUpdateMaskPoint(maskSource) {
+    if (!maskSource) {
+        sbMaskPoint = null;
+        return;
+    }
+
+    const sampleW = 80;
+    const sampleH = 45;
+    sbMaskCanvas.width = sampleW;
+    sbMaskCanvas.height = sampleH;
+    sbMaskCtx.clearRect(0, 0, sampleW, sampleH);
+    sbMaskCtx.drawImage(maskSource, 0, 0, sampleW, sampleH);
+
+    const data = sbMaskCtx.getImageData(0, 0, sampleW, sampleH).data;
+    let sx = 0, sy = 0, count = 0;
+
+    for (let y = 0; y < sampleH; y++) {
+        for (let x = 0; x < sampleW; x++) {
+            const alpha = data[(y * sampleW + x) * 4] / 255;
+            if (alpha < 0.35) continue;
+            sx += x;
+            sy += y;
+            count++;
+        }
+    }
+
+    sbMaskPoint = count >= 28
+        ? { x: sx / count / (sampleW - 1), y: sy / count / (sampleH - 1) }
+        : null;
+}
 
 function sbResetPresence() {
     clearTimeout(presenceTimer);     presenceTimer    = null;
@@ -94,6 +128,7 @@ function sbSetupMP() {
     selfie.setOptions({ modelSelection: 1 });
     selfie.onResults(r => {
         if (!sbActive) return;
+        sbUpdateMaskPoint(r.segmentationMask);
         // espelhar horizontalmente para coincidir com o que a pessoa vê
         const mask = r.segmentationMask;
         const mirrorCanvas = document.createElement('canvas');
@@ -119,26 +154,41 @@ function sbSetupMP() {
     pose.onResults(r => {
         if (!sbActive) return;
         if (!r.poseLandmarks) {
-            if (typeof sbSetProximityPosition === 'function') sbSetProximityPosition(0.5, 0.5, false);
-            sbSignalAbsent();
+            if (sbMaskPoint) {
+                const mx = 1 - sbMaskPoint.x;
+                if (typeof sbSetProximityPosition === 'function') sbSetProximityPosition(mx, sbMaskPoint.y, true);
+                const inCenterH = sbMaskPoint.x >= 0.24 && sbMaskPoint.x <= 0.76;
+                const inCenterV = sbMaskPoint.y >= 0.04 && sbMaskPoint.y <= 0.96;
+                if (inCenterH && inCenterV) sbSignalPresent();
+                else                         sbSignalAbsent();
+            } else {
+                if (typeof sbSetProximityPosition === 'function') sbSetProximityPosition(0.5, 0.5, false);
+                sbSignalAbsent();
+            }
             return;
         }
 
-        const lms = r.poseLandmarks;
+        const center = getPoseControlPoint(r.poseLandmarks);
         // usar ombros e ancas para calcular a posição do centro do corpo
-        const pts = [lms[11], lms[12], lms[23], lms[24]].filter(Boolean);
-        if (!pts.length) {
-            if (typeof sbSetProximityPosition === 'function') sbSetProximityPosition(0.5, 0.5, false);
-            sbSignalAbsent();
+        if (!center) {
+            if (sbMaskPoint) {
+                const mx = 1 - sbMaskPoint.x;
+                if (typeof sbSetProximityPosition === 'function') sbSetProximityPosition(mx, sbMaskPoint.y, true);
+                const inCenterH = sbMaskPoint.x >= 0.24 && sbMaskPoint.x <= 0.76;
+                const inCenterV = sbMaskPoint.y >= 0.04 && sbMaskPoint.y <= 0.96;
+                if (inCenterH && inCenterV) sbSignalPresent();
+                else                         sbSignalAbsent();
+            } else {
+                if (typeof sbSetProximityPosition === 'function') sbSetProximityPosition(0.5, 0.5, false);
+                sbSignalAbsent();
+            }
             return;
         }
 
-        const avgX = pts.reduce((s, p) => s + p.x, 0) / pts.length;
-        const avgY = pts.reduce((s, p) => s + p.y, 0) / pts.length;
-        if (typeof sbSetProximityPosition === 'function') sbSetProximityPosition(1 - avgX, avgY, true);
+        if (typeof sbSetProximityPosition === 'function') sbSetProximityPosition(1 - center.x, center.y, true);
 
-        const inCenterH = avgX >= 0.28 && avgX <= 0.72;
-        const inCenterV = avgY >= 0.08 && avgY <= 0.90;
+        const inCenterH = center.x >= 0.24 && center.x <= 0.76;
+        const inCenterV = center.y >= 0.04 && center.y <= 0.96;
 
         if (inCenterH && inCenterV) sbSignalPresent();
         else                         sbSignalAbsent();

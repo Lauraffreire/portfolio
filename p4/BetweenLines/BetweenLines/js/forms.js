@@ -24,6 +24,7 @@ silMaskBlur.height = SIL_ROWS;
 
 let silMaskData = null;
 let silTime     = 0;
+let formsMaskPoint = null;
 
 // ── noise e forma
 function silNoise(x, y, t) {
@@ -42,7 +43,11 @@ function silShapeBg(x, y) {
 
 // atualiza a máscara da silhueta suavizada (idêntico ao sbUpdateMask do standby)
 function silUpdateMask(maskSource) {
-    if (!maskSource) { silMaskData = null; return; }
+    if (!maskSource) {
+        silMaskData = null;
+        formsMaskPoint = null;
+        return;
+    }
 
     silMbCtx.save();
 
@@ -64,6 +69,21 @@ function silUpdateMask(maskSource) {
 
     silMbCtx.restore();
     silMaskData = silMbCtx.getImageData(0, 0, SIL_COLS, SIL_ROWS).data;
+
+    let sx = 0, sy = 0, count = 0;
+    for (let y = 0; y < SIL_ROWS; y++) {
+        for (let x = 0; x < SIL_COLS; x++) {
+            const alpha = silMaskData[(y * SIL_COLS + x) * 4] / 255;
+            if (alpha < 0.35) continue;
+            sx += x;
+            sy += y;
+            count++;
+        }
+    }
+
+    formsMaskPoint = count >= 90
+        ? { x: sx / count / (SIL_COLS - 1), y: sy / count / (SIL_ROWS - 1) }
+        : null;
 }
 
 // lê a intensidade da silhueta numa célula
@@ -365,20 +385,21 @@ function setupForms() {
     _formsPose.onResults(r => {
         if (curScreen !== 1 && curScreen !== 2 && curScreen !== 3) return;
         if (!r.poseLandmarks) {
+            if (!formsMaskPoint) {
+                if (curScreen === 1) setCursoZone(null);
+                else if (curScreen === 2) setZone(null);
+                else if (curScreen === 3 && window.graphHideStat) window.graphHideStat(1200);
+                return;
+            }
+        }
+        const controlPoint = getPoseControlPoint(r.poseLandmarks);
+        if (!controlPoint && !formsMaskPoint) {
             if (curScreen === 1) setCursoZone(null);
             else if (curScreen === 2) setZone(null);
             else if (curScreen === 3 && window.graphHideStat) window.graphHideStat(1200);
             return;
         }
-        const lm = r.poseLandmarks;
-        const lS = lm[11], rS = lm[12];
-        const lV = lS.visibility ?? 1, rV = rS.visibility ?? 1;
-
-        let mx;
-        if (lV > 0.3 && rV > 0.3) mx = 1 - ((lS.x + rS.x) / 2);
-        else if (lV > 0.3)         mx = 1 - lS.x;
-        else if (rV > 0.3)         mx = 1 - rS.x;
-        else                        mx = 1 - lm[0].x;
+        const mx = controlPoint ? 1 - controlPoint.x : formsMaskPoint.x;
 
         if (curScreen === 1) {
             const idx = mx < .25 ? 0 : mx < .50 ? 1 : mx < .75 ? 2 : 3;

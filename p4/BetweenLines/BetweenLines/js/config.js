@@ -122,6 +122,47 @@ function elemVirtualRect(el) {
     return { left:tl.vx, top:tl.vy, right:br2.vx, bottom:br2.vy };
 }
 
+function landmarkVisible(point, minVisibility = 0.25) {
+    return !!point && (point.visibility ?? 1) >= minVisibility;
+}
+
+function weightedLandmarkAverage(points) {
+    let sx = 0, sy = 0, sw = 0;
+    points.forEach(({ point, weight }) => {
+        if (!landmarkVisible(point)) return;
+        sx += point.x * weight;
+        sy += point.y * weight;
+        sw += weight;
+    });
+
+    if (!sw) return null;
+    return { x: sx / sw, y: sy / sw };
+}
+
+function getPoseControlPoint(lm) {
+    if (!lm) return null;
+
+    const torso = weightedLandmarkAverage([
+        { point: lm[11], weight: 2.2 },
+        { point: lm[12], weight: 2.2 },
+        { point: lm[23], weight: 0.8 },
+        { point: lm[24], weight: 0.8 },
+        { point: lm[0],  weight: 0.7 },
+        { point: lm[7],  weight: 0.4 },
+        { point: lm[8],  weight: 0.4 }
+    ]);
+
+    if (torso) return torso;
+
+    return weightedLandmarkAverage([
+        { point: lm[0],  weight: 1 },
+        { point: lm[7],  weight: 1 },
+        { point: lm[8],  weight: 1 },
+        { point: lm[15], weight: 0.5 },
+        { point: lm[16], weight: 0.5 }
+    ]);
+}
+
 // muda de ecrã  ativa o elemento correto e trata os side-effects
 function goTo(n) {
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
