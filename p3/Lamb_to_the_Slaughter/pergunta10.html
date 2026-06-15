@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <title>Pergunta 10</title>
+    <link rel="stylesheet" href="css/warning.css">
+    <script src="js/warning.js" defer></script>
+    <script src="js/p10.js" defer></script>
+    <script src="js/script.js" defer></script>
+    <link rel="stylesheet" href="css/p10.css">
+</head>
+
+<body>
+<div class="screen-warning" aria-live="polite">
+    <div class="screen-warning__content">
+        <img src="img/logo.png" alt="Logo" class="screen-warning__logo">
+        <p class="screen-warning__text">
+            É necessário um ecrã maior para visualizar este website.
+        </p>
+    </div>
+</div>
+
+<div id="eyes-container"></div>
+
+<div class="main-wrapper">
+    <div class="card">
+        <h2 class="title-center">Pergunta 10 / 10</h2>
+        <p class="question-text">
+            Descobres que alguém suspeita de ti. Qual é o teu próximo passo?
+        </p>
+
+        <form>
+            <div class="image-options">
+
+                <label class="image-option">
+                    <input type="radio" name="q10" value="10">
+                    <div class="image-eye">
+                        <img src="img/1.png" alt="1">
+                    </div>
+                </label>
+
+                <label class="image-option">
+                    <input type="radio" name="q10" value="0">
+                    <div class="image-eye">
+                        <img src="img/2.png" alt="2">
+                    </div>
+                </label>
+
+                <label class="image-option">
+                    <input type="radio" name="q10" value="5">
+                    <div class="image-eye">
+                        <img src="img/3.png" alt="3">
+                    </div>
+                </label>
+
+                <label class="image-option">
+                    <input type="radio" name="q10" value="2">
+                    <div class="image-eye">
+                        <img src="img/4.png" alt="4">
+                    </div>
+                </label>
+
+            </div>
+
+
+        </form>
+
+        <div class="button-row">
+            <button class="btn" type="button" onclick="nextQuestion('q10','resultado.html')">Ver Resultado</button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

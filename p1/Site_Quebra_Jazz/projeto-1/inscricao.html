@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Inscrição </title>
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/inscricao.css">
+</head>
+<body>
+<div class="header-nav-bar">
+    <div class="logo">
+        <img src="images/icon reduzido-branco.png" /></div>
+    <div class="nav-list">
+        <ul>
+            <li><a href="index.html">home</a></li>
+            <li><a href="loja.html">loja</a></li>
+            <li><a href="inscricao.html">inscrição</a></li>
+            <li><a href="contacto.html">contactos</a></li>
+        </ul>
+    </div>
+</div>
+<main>
+    <img src="images/fundos/quebra jazz.jpg" alt="fundo" id="imagem"/>
+    <form action="/submit" method="post">
+        <h4>Por favor, preencha o formulário de registo para a participar é obrigatorio inscrições acima de 18 anos de idade!</h4>
+        <!-- Nome completo -->
+        <section>
+            <label for="nome">Nome da banda/artista</label><br>
+            <input type="text" id="nome" name="nome" required><br><br>
+        </section>
+
+        <!-- Idade (Data de nascimento) -->
+        <section>
+            <label for="data_nascimento">Data de nascimento:</label><br>
+            <input type="date" id="data_nascimento" name="data_nascimento" required
+                   min="1934-11-23" max="2009-11-23"
+                   title="A idade deve estar entre 15 e 90 anos."/><br><br>
+        </section>
+
+        <!-- Qual é o teu principal interesse ambiental? -->
+        <section>
+            <label for="interesse">Número de membros na banda:</label><br>
+            <select id="interesse" name="interesse" required>
+                <option value="mudancas_climaticas">1</option>
+                <option value="sustentabilidade">2</option>
+                <option value="conservacao">3</option>
+                <option value="energias_renovaveis">4</option>
+                <option value="reducao_desperdicio">5</option>
+                <option value="outro">Outro (especificar)</option>
+            </select>
+            <input type="text" id="campoOutroInteresse" name="outro_interesse" placeholder="Especificar outro"><br><br>
+        </section>
+
+        <!-- Que ações já praticas no teu dia a dia? -->
+        <section>
+            <label>Confirma que atende aos seguintes critérios de inscrição??</label>
+            <br><br><!--Espaço em branco -->
+            <input type="checkbox" id="Reclicagem" name="Reclicagem" value="Reclicagem">
+            <label for="Reclicagem">Tenho uma banda ou sou um artista solo</label>
+            <br>
+            <input type="checkbox" id="Utilização de transportes sustentáveis"
+                   name="Utilização de transportes sustentáveis"
+                   value="Utilização de transportes sustentáveis">
+            <label for="Utilização de transportes sustentáveis">Disponho de material de apresentação.</label>
+            <br>
+            <input type="checkbox" id="Redução do consumo de plástico" name="Redução do consumo de plástico"
+                   value="Redução do consumo de plástico">
+            <label for="Redução do consumo de plástico">Concordo com os termos e condições do festival.</label>
+            <br>
+            <input type="checkbox" id="Compostagem" name="Compostagem" value="Compostagem">
+            <label for="Compostagem">Estou disponível para atuar nas datas do festival.</label>
+            <br><br><!--Espaço em branco -->
+        </section>
+
+        <!-- Com que frequência participas em atividades ambientais? -->
+        <section>
+            <label for="frequencia_atividades">Com que frequência participas em atividades ambientais?</label><br>
+            <select id="frequencia_atividades" name="frequencia_atividades" required>
+                <option value="regularmente">Regularmente</option>
+                <option value="ocasionalmente">Ocasionalmente</option>
+                <option value="nunca">Nunca</option>
+                <option value="quero_comecar">Quero começar a participar</option>
+            </select><br><br>
+        </section>
+
+        <!-- Qual consideras ser o maior desafio ambiental atual? -->
+        <section>
+            <label for="desafio">Qual consideras ser o maior desafio ambiental atual?</label><br>
+            <select id="desafio" name="desafio" required>
+                <option value="poluicao">Poluição</option>
+                <option value="desflorestacao">Desflorestação</option>
+                <option value="escassez_agua">Escassez de água</option>
+                <option value="degradacao_oceanos">Degradação dos oceanos</option>
+                <option value="aquecimento_global">Aquecimento global</option>
+            </select><br><br>
+        </section>
+
+        <!-- Estás interessado em voluntariado ambiental? -->
+        <section>
+            <label for="voluntariado">Está interessado em participar em futuras edições do festival?</label><br>
+            <select id="voluntariado" name="voluntariado" required>
+                <option value="sim">Sim, como artista/banda.</option>
+                <option value="ja_faco">Sim, como voluntário.</option>
+                <option value="talvez">Sim, como colaborador na organização.</option>
+                <option value="nao">Não, apenas nesta edição.</option>
+            </select><br><br>
+        </section>
+
+        <!-- O que te motiva a proteger o meio ambiente? -->
+        <section>
+            <label>Quais dos seguintes documentos/informações estão incluídos na sua inscrição?</label>
+            <br><br><!--Espaço em branco -->
+            <input type="checkbox" id="Proteger o planeta para futuras gerações"
+                   name="Proteger o planeta para futuras gerações" value="Proteger o planeta para futuras gerações">
+            <label for="Proteger o planeta para futuras gerações">Press kit (bio, fotos, links para redes sociais).</label>
+            <br>
+            <input type="checkbox" id="Melhorar a saúde e o bem-estar" name="Melhorar a saúde e o bem-estar"
+                   value="Melhorar a saúde e o bem-estar">
+            <label for="Melhorar a saúde e o bem-estar">Gravação de demonstração (demo).</label>
+            <br>
+            <input type="checkbox" id="Interesse pela natureza" name="Interesse pela natureza"
+                   value="Interesse pela natureza">
+            <label for="Interesse pela natureza">Lista técnica (necessidades de som/iluminação).</label>
+            <br>
+            <input type="checkbox" id="Preocupação com a biodiversidade" name="Preocupação com a biodiversidade"
+                   value="Preocupação com a biodiversidade">
+            <label for="Preocupação com a biodiversidade">Contrato de autorização para uso de imagem e som.</label>
+            <br>
+            <input type="checkbox" id="Fazer a diferença" name="Fazer a diferença" value="Fazer a diferença">
+            <label for="Fazer a diferença">Outras informações relevantes (especifique).</label>
+            <br><br><!--Espaço em branco -->
+        </section>
+
+        <!-- Qual destas áreas ambientais gostarias de aprender mais? -->
+        <div>
+            <legend>Quais os elementos que a sua atuação inclui?</legend>
+            <br>
+            <subdiv>
+                <input type="radio" id="Energia limpa" name="Energia limpa" value="Energia limpa" checked/>
+                <label for="Energia limpa">Banda ao vivo.</label>
+            </subdiv>
+            <br>
+            <subdiv>
+                <input type="radio" id="Alimentação sustentável" name="Alimentação sustentável"
+                       value="Alimentação sustentável"/>
+                <label for="Alimentação sustentável">Performance solo.</label>
+            </subdiv>
+            <br>
+            <subdiv>
+                <input type="radio" id="Zero Waste" name="Zero Waste" value="Zero Waste"/>
+                <label for="Zero Waste">Elementos visuais (projeções, luzes, etc.).</label>
+            </subdiv>
+            <br>
+            <subdiv>
+                <input type="radio" id="Proteção da vida selvagem" name="Proteção da vida selvagem"
+                       value="Proteção da vida selvagem"/>
+                <label for="Proteção da vida selvagem">Interação com o público.</label>
+            </subdiv>
+            <br>
+            <subdiv>
+                <input type="radio" id="Políticas ambientais" name="Políticas ambientais" value="Políticas ambientais"/>
+                <label for="Políticas ambientais">Instrumentos/acessórios próprios.</label>
+            </subdiv>
+            <br>
+            <subdiv>
+                <input type="radio" id="Agricultura biológica" name="Agricultura biológica"
+                       value="Agricultura biológica"/>
+                <label for="Agricultura biológica">Outros (especifique).</label>
+            </subdiv>
+        </div>
+        <br>
+
+        <!-- Botão para criar conta -->
+        <input type="submit" value="Enviar"><br><br>
+    </form>
+</main>
+<footer>
+    <div class="footer-container">
+        <div class="social-icons">
+            <a href="https://www.facebook.com/quebrajazz" target="_blank"><i class='bx bxl-facebook'></i></a>
+            <a href="https://www.instagram.com/festivaldasartes/" target="_blank"><i class='bx bxl-instagram'></i></a>
+            <a href="https://www.youtube.com/@quebrajazzcoimbra8613" target="_blank"><i class='bx bxl-youtube'></i></a>
+        </div>
+
+        <div class="footer-nav">
+            <ul>
+                <li><a href="#">Página Principal</a></li>
+                <li><a href="#">Programa</a></li>
+                <li><a href="#">Sobre Nós</a></li>
+                <li><a href="#">Contacte-nos</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p><a href="mailto:contato@museu.art">contato@museu.art</a></p>
+        <p>Copyright &copy;2024
+            <br>
+            Designed by <span class="designer">Afonso Almeida,Rogério Edgar, Laura Freire e Tiago Gomes</span>
+        </p>
+    </div>
+</footer>
+<script src="inscrição.js"></script>
+</body>
+</html>

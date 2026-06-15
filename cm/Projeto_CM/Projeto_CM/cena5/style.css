@@ -1,0 +1,214 @@
+/* define a floresta do gato, placas e animacoes */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100vw;
+  height: 100dvh;
+  overflow: hidden;
+  background: #0d2a23;
+}
+
+.scene-page {
+  width: 100%;
+  height: 100%;
+}
+
+.scene-stage {
+  position: relative;
+  width: 100vw;
+  height: 100dvh;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition: transform 220ms ease;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+
+.scene-bg {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+
+.cat-tree {
+  position: absolute;
+  left: 1%;
+  top: 15%;
+  width: 20%;
+  cursor: pointer;
+  filter: drop-shadow(0 8px 16px rgba(0,0,0,0.45));
+  transition: opacity 0.4s ease;
+  z-index: 10;
+}
+.cat-tree img {
+  display: block;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+}
+.cat-tree.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cat-eyes {
+  position: absolute;
+  left: 1%;
+  top: 15%;
+  width: 20%;
+  cursor: pointer;
+  filter: drop-shadow(0 8px 16px rgba(0,0,0,0.45));
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 10;
+}
+.cat-eyes img {
+  display: block;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+}
+.cat-eyes.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+.cat-floor {
+  position: absolute;
+  right: 8%;
+  top: 50%;
+  width: 22%;
+  cursor: pointer;
+  filter: drop-shadow(0 8px 16px rgba(0,0,0,0.45));
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 10;
+}
+.cat-floor img {
+  display: block;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+}
+.cat-floor.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+.sign {
+  position: absolute;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  transform-origin: center center;
+  transition: filter 180ms ease, transform 180ms ease;
+  filter: drop-shadow(0 6px 10px rgba(0,0,0,0.4));
+  z-index: 5;
+}
+.sign img {
+  display: block;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+}
+.sign:hover,
+.sign:focus-visible,
+.sign.is-active {
+  filter: drop-shadow(0 14px 20px rgba(0,0,0,0.55)) brightness(1.1);
+  outline: none;
+}
+
+
+.sign-down {
+  right: -1.5%;
+  top: 0%;
+  width: 16.2%;
+  transform: rotate(-40deg);
+}
+
+
+.sign-thisway {
+  right: 8.4%;
+  top: 50%;
+  width: 16.2%;
+  transform: rotate(3deg);
+}
+.sign-thisway:hover,
+.sign-thisway:focus-visible,
+.sign-thisway.is-active {
+  transform: rotate(3deg) translateY(-4px);
+}
+
+
+.sign-up {
+  left: 41.4%;
+  top: 40%;
+  width: 16.2%;
+  transform: rotate(-2deg);
+}
+
+
+.sign-thatway {
+  left: 12.4%;
+  top: 10%;
+  width: 16.2%;
+  transform: rotate(-8deg);
+}
+.sign-thatway:hover,
+.sign-thatway:focus-visible,
+.sign-thatway.is-active {
+  transform: rotate(-8deg) translateY(-4px);
+}
+
+
+.sign-goback {
+  left: 42.4%;
+  top: 10%;
+  width: 16.2%;
+  transform: rotate(-5deg);
+}
+.sign-goback:hover,
+.sign-goback:focus-visible,
+.sign-goback.is-active {
+  transform: rotate(-5deg) translateY(-4px);
+}
+
+
+.sign-yonder {
+  left: 32.7%;
+  top: 21%;
+  width: 8.6%;
+  transform: rotate(4deg);
+}
+.sign-yonder:hover,
+.sign-yonder:focus-visible,
+.sign-yonder.is-active {
+  transform: rotate(4deg) translateY(-4px);
+}
+
+
+.sign-shake {
+  animation: signShake 0.35s ease;
+}
+@keyframes signShake {
+  0%   { filter: drop-shadow(0 6px 10px rgba(0,0,0,0.4)) brightness(1.4); }
+  25%  { transform: var(--t, none) rotate(6deg) scale(1.08); }
+  50%  { transform: var(--t, none) rotate(-4deg) scale(1.05); }
+  75%  { transform: var(--t, none) rotate(3deg) scale(1.03); }
+  100% { filter: drop-shadow(0 6px 10px rgba(0,0,0,0.4)); }
+}

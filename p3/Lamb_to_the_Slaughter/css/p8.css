@@ -1,0 +1,159 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "YouMurderer BB", sans-serif;
+    color: #6e0f0f;
+}
+
+body {
+    overflow: hidden;
+    padding: 20px;
+
+}
+
+#bgCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+#bloodCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    cursor: none;
+}
+
+.main-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    width: 100%;
+    max-width: 700px;
+    padding: 0 45px;
+    justify-content: center;
+    font-size: 50px;
+    z-index: 10;
+}
+
+.title-center {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 127px;
+}
+
+.question-text {
+    margin-bottom: 40px;
+}
+
+.cima{
+    font-size: 78px;
+}
+
+.baixo{
+    font-size: 84px;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.option-label {
+    transition: 0.2s;
+}
+
+.oa{
+    font-size: 60px;
+}
+
+.ob{
+    font-size: 47px;
+}
+
+.oc{
+    font-size: 58px;
+}
+
+.od{
+    font-size: 73px;
+}
+
+.option-label:hover {
+    opacity: 0.3;
+}
+
+.option-label input[type="radio"]:checked + span {
+    color: #9a1b03;
+}
+
+.option-label input[type="radio"] {
+    display: none;
+}
+
+.button-row {
+    margin-top: 28px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn {
+    position: fixed;
+    right: 400px;
+    top: 90%;
+    transform: translateY(-50%) scaleX(1.7);
+    background-color: transparent;
+    border: none;
+    font-size: 120px;
+    cursor: pointer;
+    transition: 0.2s;
+    z-index: 20;
+}
+
+.btn:hover {
+    opacity: 0.3;
+}
+
+@media (max-width: 1500px) {
+    .btn{
+        right: 270px;
+    }
+}
+
+@media (max-width: 1400px) {
+    .btn{
+        right: 220px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .btn{
+        right: 120px;
+    }
+}
+
+@media (max-width: 1050px) {
+    .btn{
+        right: 70px;
+    }
+}
+
+@media (max-width: 950px) {
+    .btn{
+        right: 50px;
+    }
+}
+
+
+
+
+

@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+#standbyOverlay {
+    position: absolute;
+    inset: 0;
+    top: 0;
+    left: 0;
+    width: var(--total-w);
+    height: var(--total-h);
+    z-index: 9000;
+    pointer-events: none;
+    background: #f8eee5;
+    font-family: 'Poppins', sans-serif;
+}
+
+#standbyCanvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+#standbyBtn {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    transition: opacity .3s;
+}
+
+#standbyVariableText {
+    display: block;
+    width: 100%;
+    color: #6d2239;
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(260px, 8vw, 520px);
+    font-weight: 200;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    text-align: center;
+    text-transform: none;
+    white-space: nowrap;
+    user-select: none;
+}
+
+.standby-letter {
+    display: inline-block;
+    font-weight: 200;
+    will-change: font-weight, color;
+}
+
+.standby-word {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+#standbyBtn svg.ring {
+    display: none;
+}
+
+#standbyProg {
+    display: none;
+    fill: none;
+    stroke: #6d2239;
+    stroke-width: 5;
+    stroke-linecap: round;
+    stroke-dasharray: 616;
+    stroke-dashoffset: 616;
+    transition: stroke-dashoffset .08s linear;
+    filter: drop-shadow(0 0 12px #6d2239);
+}
+
+/* Transição de saída */
+#standbyOverlay.leaving {
+    transition: opacity 1.2s ease;
+    opacity: 0;
+}
+
+/* Legenda em baixo */
+#standbyKbd {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 70px;
+    color: rgba(109,34,57);
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    font-family: "Poppins SemiBold", sans-serif;
+
+}
+#standbyKbd strong {
+    color: rgba(109,34,57,0.90);
+    font-weight: 700;
+}
+

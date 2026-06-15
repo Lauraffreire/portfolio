@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alice in Wonderland</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<div class="app-shell">
+    <header class="hud">
+        <div class="hud-copy">
+            <p class="eyebrow" id="sceneBadge">Interativa</p>
+            <h1 id="sceneTitle">Portas</h1>
+            <p class="scene-summary" id="sceneSummary"></p>
+        </div>
+
+        <div class="hud-side">
+            <div class="progress-card" id="sceneProgressCard" hidden>
+                <div class="progress-row">
+                    <span class="progress-label">Progresso</span>
+                    <span class="progress-value" id="sceneProgressText">Porta 1 / 6</span>
+                </div>
+                <div class="progress-track" aria-hidden="true">
+                    <div class="progress-fill" id="sceneProgressFill"></div>
+                </div>
+            </div>
+
+            <button class="ghost-button hud-button" id="fullscreenButton" type="button" aria-pressed="false" aria-label="Entrar em tela cheia"></button>
+        </div>
+    </header>
+
+    <main class="stage" id="stage">
+        <div class="scene-wrap">
+            <section class="scene-frame" id="sceneFrame" aria-live="polite">
+                <div class="scene-backdrop" id="sceneBackdrop"></div>
+                <div class="scene-underlay" id="sceneUnderlay"></div>
+                <img class="scene-image" id="sceneImage" alt="">
+                <div class="scene-vignette"></div>
+                <div class="scene-content" id="sceneContent"></div>
+                <div class="scene-overlay" id="sceneOverlay"></div>
+                <div class="scene-caption" id="sceneCaption"></div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="controls">
+        <div class="controls-group">
+            <button class="ghost-button" id="prevSceneButton" type="button">Cena anterior</button>
+            <button class="ghost-button" id="restartSceneButton" type="button">Reiniciar cena</button>
+        </div>
+
+        <nav class="scene-nav" id="sceneNav" aria-label="Mapa das cenas"></nav>
+
+        <div class="controls-group controls-group-end">
+            <button class="primary-button" id="nextSceneButton" type="button">Proxima cena</button>
+        </div>
+    </footer>
+</div>
+
+<div class="screen-size-warning" role="status" aria-live="polite">
+    <p>Please use a larger screen to start the experience.</p>
+</div>
+
+<script src="som/script.js"></script>
+<script src="cenas.js"></script>
+<script src="tunel/script.js"></script>
+<script src="cena1/script.js"></script>
+<script src="cena2/script.js"></script>
+<script src="cena3_4/script.js"></script>
+<script src="index.js"></script>
+</body>
+</html>

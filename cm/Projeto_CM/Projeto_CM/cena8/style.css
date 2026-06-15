@@ -1,0 +1,218 @@
+/* define o tabuleiro, cartas, hud e estados finais do jogo */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #000;
+  font-family: serif;
+  user-select: none;
+}
+
+
+#game-screen {
+  position: fixed;
+  inset: 0;
+  background: url('images/fundoarbustro.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+#board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: clamp(40px, 7vw, 110px);
+  row-gap: clamp(16px, 2.5vh, 36px);
+  width: 98vw;
+  max-width: 1400px;
+  padding: 0 2vw;
+}
+
+
+.card {
+  aspect-ratio: 3/4;
+  perspective: 1000px;
+  cursor: pointer;
+  max-width: 150px;
+  justify-self: center;
+  width: 100%;
+  filter: drop-shadow(0 4px 14px rgba(0,0,0,0.75));
+  transition: filter 0.3s;
+}
+.card:hover:not(.matched) {
+  filter: drop-shadow(0 6px 22px rgba(255,255,255,0.28));
+}
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.55s cubic-bezier(0.4,0,0.2,1);
+}
+.card.flipped .card-inner,
+.card.matched .card-inner { transform: rotateY(180deg); }
+
+.card-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+}
+.card-face img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+.card-front { transform: rotateY(180deg); }
+.card.matched { filter: drop-shadow(0 0 14px rgba(255,215,0,0.85)); }
+.card.shake { animation: cardShake 0.48s ease; }
+@keyframes cardShake {
+  0%,100% { transform: translateX(0); }
+  18%  { transform: translateX(-10px) rotate(-2deg); }
+  36%  { transform: translateX(10px)  rotate(2deg); }
+  54%  { transform: translateX(-6px); }
+  72%  { transform: translateX(6px); }
+}
+
+
+#hud {
+  position: fixed;
+  top: 16px;
+  left: 20px;
+  z-index: 50;
+  display: flex;
+  gap: 8px;
+}
+.life-heart {
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.4s ease;
+}
+.life-heart img {
+  width: 2.2rem;
+  height: 2.2rem;
+  object-fit: contain;
+  filter: drop-shadow(0 0 6px rgba(255,0,0,0.9));
+  transition: all 0.4s ease;
+  display: block;
+}
+.life-heart.lost img {
+  filter: grayscale(1) opacity(0.25);
+  transform: scale(0.65);
+}
+
+
+#win-screen {
+  position: fixed;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  background: rgba(0,60,0,0.88);
+  z-index: 200;
+}
+#win-screen.active { display: flex; animation: fadeIn 0.5s ease; }
+#win-screen h2 {
+  font-size: clamp(2rem,5vw,3.5rem);
+  color: #ffd700;
+  text-shadow: 2px 2px 0 #000;
+}
+.btn-restart {
+  background: #6b0000;
+  color: #ffcccc;
+  border: 2px solid #ff6666;
+  padding: 14px 44px;
+  font-family: serif;
+  font-size: 1.1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  letter-spacing: 2px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn-restart:hover {
+  transform: scale(1.06);
+  box-shadow: 0 0 28px rgba(255,0,0,0.7);
+}
+
+
+#death-screen {
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 100;
+  overflow: hidden;
+}
+#death-screen.active { display: block; }
+
+
+#death-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(120, 0, 0, 0.72);
+  opacity: 0;
+  transition: opacity 0.7s ease;
+  z-index: 1;
+}
+#death-overlay.show { opacity: 1; }
+
+
+#death-queen {
+  position: absolute;
+  bottom: -5%;
+  right: 2%;
+  height: 90vh;
+  max-height: 720px;
+  object-fit: contain;
+  opacity: 0;
+  transform: translateX(100px) scale(0.88);
+  transition: opacity 0.9s ease, transform 1s cubic-bezier(0.2,0,0.2,1);
+  z-index: 3;
+  pointer-events: none;
+}
+#death-queen.show { opacity: 1; transform: translateX(0) scale(1); }
+
+
+#death-text {
+  position: absolute;
+  left: 9%;
+  top: 28%;
+  width: clamp(260px, 44vw, 580px);
+  opacity: 0;
+  transform: translateX(-70px);
+  transition: opacity 0.7s ease 0.3s, transform 0.85s ease 0.3s;
+  z-index: 3;
+  pointer-events: none;
+  filter: drop-shadow(3px 3px 8px rgba(0,0,0,0.95));
+}
+#death-text.show { opacity: 1; transform: translateX(0); }
+
+
+#death-splash {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 130vw;
+  max-width: none;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(1);
+  z-index: 6;
+  pointer-events: none;
+  transition: none;
+}
+#death-splash.show {
+  animation: splashBurst 2s cubic-bezier(0.2, 0, 0.6, 1) forwards;
+}
+@keyframes splashBurst {
+  0%   { opacity: 0;    transform: translate(-50%, -50%) scale(1); }
+  15%  { opacity: 1;    transform: translate(-50%, -50%) scale(1.05); }
+  100% { opacity: 1;    transform: translate(10%, -15%) scale(20); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; } to { opacity: 1; }
+}

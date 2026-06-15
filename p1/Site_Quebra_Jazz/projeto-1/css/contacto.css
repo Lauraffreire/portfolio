@@ -1,0 +1,29 @@
+.montserrat-cllasc {
+    font-family: "Montserrat", serif;
+    font-optical-sizing: auto;
+    font-weight: 100;
+    font-style: normal;
+}
+
+#container {
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 100px);
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    outline: 2px white solid;
+    padding: 40px;
+    text-align: center;
+}
+
+h1 {
+    font-family: "Montserrat", serif;
+    color: white;
+}
+
+h3 {
+    font-family: "Montserrat", serif;
+    color: white;
+}

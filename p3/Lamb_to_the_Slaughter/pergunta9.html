@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Pergunta 9</title>
+    <link rel="stylesheet" href="css/9.css">
+    <script src="js/9.js" defer></script>
+    <script src="js/script.js" defer></script>
+    <link rel="stylesheet" href="css/warning.css">
+    <script src="js/warning.js" defer></script>
+
+</head>
+
+<body>
+
+<div class="screen-warning" aria-live="polite">
+    <div class="screen-warning__content">
+
+        <img src="img/logo.png" alt="Logo" class="screen-warning__logo">
+
+        <p class="screen-warning__text">
+            É necessário um ecrã maior para visualizar este website.
+        </p>
+
+    </div>
+</div>
+
+<div class="lanterna-container" id="lanterna">
+    <div class="grupo-rotacao" id="grupo-rotacao">
+
+        <img src="img/borda.png" class="borda-lanterna">
+        <img src="img/luz.png" class="cone-luz" id="cone">
+        <img src="img/lanterna.png" class="lanterna">
+
+    </div>
+</div>
+
+<div class="conteudo">
+        <h2 class="title-center">Pergunta 9 / 10</h2>
+
+        <p class="question-text">
+            A polícia está na tua sala a investigar. O que ofereces?
+        </p>
+
+        <form>
+            <div class="options">
+
+                <label class="option-label">
+                    <input type="radio" name="q9" value="6">
+                    <span><strong>A)</strong> Nada, quero que saiam depressa.</span>
+                </label>
+
+                <label class="option-label">
+                    <input type="radio" name="q9" value="10">
+                    <span><strong>B)</strong> Uma refeição, se for apropriado.</span>
+                </label>
+
+                <label class="option-label">
+                    <input type="radio" name="q9" value="0">
+                    <span><strong>C)</strong> Uma bebida quente, como um chá.</span>
+                </label>
+
+                <label class="option-label">
+                    <input type="radio" name="q9" value="5">
+                    <span><strong>D)</strong> Um sorriso simpático e respostas curtas.</span>
+                </label>
+
+            </div>
+        </form>
+
+        <div class="button-row">
+            <button class="btn" type="button" onclick="nextQuestion('q9','pergunta10.html')">
+                Próxima
+            </button>
+        </div>
+</div>
+
+</body>
+</html>

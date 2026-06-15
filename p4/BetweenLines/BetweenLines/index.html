@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FeedNPlay — DEI UC</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/selfie_segmentation.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose/pose.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/standby.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/graph.css">
+</head>
+<body>
+
+<div id="stage">
+
+    <!-- painel stanby -->
+    <div id="standbyOverlay">
+        <canvas id="standbyCanvas"></canvas>
+
+        <div id="standbyBtn">
+            <svg class="ring" viewBox="0 0 208 208" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="104" cy="104" r="98" fill="none" stroke="transparent" stroke-width="3"/>
+                <circle id="standbyProg" cx="104" cy="104" r="98"/>
+            </svg>
+            <div id="standbyVariableText" aria-label="Between Lines">Between Lines</div>
+        </div>
+
+        <p id="standbyKbd">Posiciona-te no <strong>centro</strong> do ecrã para iniciar</p>
+    </div>
+
+    <!-- painel quiz -->
+    <div id="panelLeft">
+        <video id="videoEl" playsinline></video>
+
+        <!-- inicio -->
+        <div class="screen active" id="s1">
+            <div class="q-header">
+                <h2 class="qtitle">Qual é o teu curso?</h2>
+                <p class="qdesc">Posiciona-te à frente da opção durante 2 segundos</p>
+            </div>
+            <div class="curso-row" id="cursoRow">
+                <div class="curso-card dm" data-c="dm">
+                    <div class="inner">
+                        <div class="cname">Design e Multimédia</div>
+                        <div class="ccode">DM · DEI</div>
+                    </div>
+                </div>
+                <div class="curso-card ei" data-c="ei">
+                    <div class="inner">
+                        <div class="cname">Engenharia Informática</div>
+                        <div class="ccode">EI · DEI</div>
+                    </div>
+                </div>
+                <div class="curso-card cd" data-c="cd">
+                    <div class="inner">
+                        <div class="cname">Ciência de Dados</div>
+                        <div class="ccode">CD · DEI</div>
+                    </div>
+                </div>
+                <div class="curso-card ext" data-c="ext">
+                    <div class="inner">
+                        <div class="cname">Estudante Externo</div>
+                        <div class="ccode">EXT · UC</div>
+                    </div>
+                </div>
+            </div>
+            <div id="cursoCdWrap">
+                <div class="cd-num" id="cursoCdNum">5</div>
+                <div class="cd-hint">posiciona-te</div>
+            </div>
+        </div>
+
+        <!-- perguntas -->
+        <div class="screen" id="s2">
+            <div id="qTop" class="q-header">
+                <div class="qstep" id="qStep">Pergunta 1 de 12</div>
+                <div class="qtext" id="qText"></div>
+                <div class="progbar">
+                    <div class="progfill" id="progFill"></div>
+                </div>
+            </div>
+            <div id="zonesRow">
+                <div class="zone-block" id="zLeft">
+                    <div class="zone-label" id="zLblLeft"></div>
+                </div>
+                <div class="zone-block" id="zMid">
+                    <div class="zone-label" id="zLblMid"></div>
+                </div>
+                <div class="zone-block" id="zRight">
+                    <div class="zone-label" id="zLblRight"></div>
+                </div>
+                <div id="cdWrap">
+                    <div class="cd-ring">
+                        <svg viewBox="0 0 72 72" width="72" height="72">
+                            <circle class="cd-bg" cx="36" cy="36" r="32"/>
+                            <circle class="cd-arc" id="cdArc" cx="36" cy="36" r="32"/>
+                        </svg>
+                        <div class="cd-num" id="cdNum">5</div>
+                    </div>
+                    <div class="cd-hint">posiciona-te</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!--grafico linhas -->
+    <div id="panelRight">
+        <div id="chartHeader">
+            <div id="chartHeaderLeft">
+                <span class="chart-eyebrow">Coordenadas Paralelas · Comunidade DEI</span>
+                <h2 id="chartTitle">Respostas da comunidade</h2>
+            </div>
+            <div class="legend" id="chartLegend">
+                <div class="leg-item"><div class="leg-dot" style="background:#F037A5;box-shadow:0 0 18px 6px #F037A5"></div><span style="color:#F037A5">Design e Multimédia</span></div>
+                <div class="leg-item"><div class="leg-dot" style="background:#CDF564;box-shadow:0 0 18px 6px #CDF564"></div><span style="color:#CDF564">Eng. Informática</span></div>
+                <div class="leg-item"><div class="leg-dot" style="background:#FF4632;box-shadow:0 0 18px 6px #FF4632"></div><span style="color:#FF4632">Ciência de Dados</span></div>
+                <div class="leg-item"><div class="leg-dot" style="background:#ffb800;box-shadow:0 0 18px 6px #ffb800"></div><span style="color:#ffb800">Estudante Externo</span></div>
+            </div>
+        </div>
+        <div id="chartMain">
+            <svg id="mainChartSvg"></svg>
+        </div>
+        <div id="neonToast">
+            <div id="neonSwatch"></div>
+            <div id="neonInfo">
+                <span id="neonLabel">A tua linha</span>
+                <span id="neonCourse"></span>
+            </div>
+        </div>
+        <div id="participantCount">
+            <span id="participantNum">—</span>
+            <span class="part-label">participantes</span>
+        </div>
+    </div>
+
+</div>
+<script src="js/config.js"></script>
+<script src="js/standby.js"></script>
+<script src="js/graph.js"></script>
+<script src="js/standby_mp.js"></script>
+<script src="js/forms.js"></script>
+</body>
+</html>

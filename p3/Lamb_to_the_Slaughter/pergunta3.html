@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Pergunta 3</title>
+    <link rel="stylesheet" href="css/3.css">
+    <script src="js/script.js" defer></script>
+    <script src="js/3.js" defer></script>
+    <link rel="stylesheet" href="css/warning.css">
+    <script src="js/warning.js" defer></script>
+</head>
+
+<body>
+
+<div class="screen-warning" aria-live="polite">
+    <div class="screen-warning__content">
+
+        <img
+                src="img/logo.png"
+                alt="Logo"
+                class="screen-warning__logo"
+        >
+
+        <p class="screen-warning__text">
+            É necessário um ecrã maior para visualizar este website.
+        </p>
+
+    </div>
+</div>
+    <img src="img/fundocozinha.png" alt="prateleira" class="img-fundo">
+
+<div class="conteudo">
+
+    <h2 class="title-center">Pergunta 3 / 10</h2>
+    <p class="question-text">O que usas mais na cozinha:</p>
+
+    <div class="quadro-container">
+        <img src="img/quadro.png" alt="quadro" class="quadro-img">
+    </div>
+
+
+    <div class="objetos-container">
+
+        <div class="obj" data-value="3" data-text="Um rolo da massa." data-radio="q3-rolo">
+            <img src="img/rolo sombra.png" class="sombra">
+            <img src="img/rolo.png" class="cor">
+        </div>
+
+        <div class="obj" data-value="9" data-text="Um bom conjunto de facas afiadas." data-radio="q3-faca">
+            <img src="img/faca sombra.png" class="sombra">
+            <img src="img/faca.png" class="cor">
+        </div>
+
+        <div class="obj" data-value="0" data-text="Uma colher de pau." data-radio="q3-colher">
+            <img src="img/colher sombra.png" class="sombra">
+            <img src="img/colher.png" class="cor">
+        </div>
+
+        <div class="obj gelo" data-value="10" data-text="Comida congelada, porque sou prático/a e não tenho tempo." data-radio="q3-gelo">
+            <img src="img/gelo sombra.png" class="sombra">
+            <img src="img/gelo.png" class="cor">
+        </div>
+
+    </div>
+
+    <p class="descricao-selecao"></p>
+
+    <div class="radios-ocultos">
+        <input type="radio" name="q3" id="q3-rolo" value="3">
+        <input type="radio" name="q3" id="q3-faca" value="9">
+        <input type="radio" name="q3" id="q3-colher" value="0">
+        <input type="radio" name="q3" id="q3-gelo" value="10">
+    </div>
+
+    <div class="button-row">
+        <button class="btn" type="button"
+                onclick="nextQuestion('q3','pergunta4.html')">
+            Próxima
+        </button>
+    </div>
+
+</div>
+
+</body>
+
+
+</html>

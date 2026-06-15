@@ -1,0 +1,210 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: #0d1117;
+    color: #cad0da;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.eye {
+    position: absolute;
+    width: 120px;
+    height: 60px;
+    background: white;
+    border-radius: 110% / 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.eye:before,
+.eye:after {
+    content: '';
+    position: absolute;
+    width: 130%;
+    height: 190%;
+    left: 50%;
+    z-index: 1;
+    transform: translateX(-50%);
+}
+
+.eye:before {
+    top: 0;
+    border-radius: 0 0 50% 50%;
+    border-bottom: 40px solid #0d1117;
+    transform: translateX(-50%) translateY(var(--eyelid, 0%));
+}
+
+.eye:after {
+    bottom: 0;
+    border-radius: 50% 50% 0 0;
+    border-top: 40px solid #0d1117;
+    transform: translateX(-50%) translateY(var(--eyelid2, 0%));
+}
+
+.eye i {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.eye i .pupil {
+    width: 20px;
+    height: 20px;
+    background: black;
+    border-radius: 50%;
+}
+
+.main-wrapper {
+    z-index: 10;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.card {
+    max-width: 900px;
+    width: 100%;
+    padding: 32px 28px;
+    text-align: center;
+}
+
+.card,
+.card * {
+    pointer-events: auto;
+}
+
+.title-center {
+    margin-bottom: 30px;
+    font-size: 30px;
+    color: #a3b2c8;
+}
+
+.question-text {
+    font-size: 18px;
+    margin-bottom: 40px;
+    color: #a3b2c8;
+    font-weight: bold;
+}
+
+.title-center,
+.question-text {
+    pointer-events: none;
+}
+
+.image-options {
+    display: grid;
+    grid-template-columns: repeat(2, 220px);
+    gap: 40px;
+    justify-content: center;
+}
+.image-option {
+    cursor: pointer;
+}
+
+.image-option input {
+    display: none;
+}
+
+/*imagens*/
+.image-eye {
+    position: relative;
+    width: 220px;
+    height: 110px;
+    background: white;
+    border-radius: 110% / 100%;
+    overflow: hidden;
+}
+
+.image-eye img {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* pálpebras*/
+.image-eye::before,
+.image-eye::after {
+    content: '';
+    position: absolute;
+    width: 130%;
+    height: 190%;
+    left: 50%;
+    z-index: 2;
+    transform: translateX(-50%);
+}
+
+.image-eye::before {
+    top: 0;
+    border-radius: 0 0 50% 50%;
+    border-bottom: 40px solid #0d1117;
+    transform: translateX(-50%) translateY(var(--eyelid, 0%));
+}
+
+.image-eye::after {
+    bottom: 0;
+    border-radius: 50% 50% 0 0;
+    border-top: 40px solid #0d1117;
+    transform: translateX(-50%) translateY(var(--eyelid2, 0%));
+}
+
+@keyframes blink-eye {
+    0% {
+        --eyelid: 0%;
+        --eyelid2: 0%;
+    }
+    45% {
+        --eyelid: -47%;
+        --eyelid2: 47%;
+    }
+    55% {
+        --eyelid: -47%;
+        --eyelid2: 47%;
+    }
+    100% {
+        --eyelid: 0%;
+        --eyelid2: 0%;
+    }
+}
+
+/*botão*/
+.button-row {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.btn {
+    background-color: #fff;
+    color: #000;
+    border: none;
+    padding: 10px 26px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 50px;
+    opacity: 0.7;
+}
+
+.btn:hover {
+    opacity: 1;
+}

@@ -1,0 +1,370 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Gotham Black", sans-serif;
+    box-sizing: border-box;
+}
+p{
+    font-family: "Gotham Black", sans-serif;
+}
+body{
+    font-family: "Montserrat", serif;
+}
+.montserrat-cllasc{
+                 font-family: "Montserrat", serif;
+                 font-optical-sizing: auto;
+                 font-weight: 100;
+                 font-style: normal;
+             }
+/*------------------------------------------------------------------------------------ LETRAS --------------------*/
+.letras{
+    width: 100%;
+    height: 700px;
+    background-color: black;
+    display: flex;
+    flex-direction:  row;
+    position: relative;
+}
+.letrasEsquerda{
+    display: flex;
+    flex-direction: column;
+}
+.letras>.letrasEsquerda>img{
+    width: 70px;
+    height: 70px;
+    margin: 15px 50px;
+}
+.mexeA{
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    top: 415px;
+    animation: moverA 5s infinite alternate ease-out;
+}
+@keyframes moverA {
+    from{
+     left: 9vw;
+    }
+    to{
+        left: 60vw;
+    }
+}
+.mexeEBRA{
+    width:  280px;
+    height: 70px;
+    position: absolute;
+    left: 1000px;
+    top: 110px;
+    animation: moverEBRA 6s infinite alternate ease-out;
+}
+@keyframes moverEBRA {
+    from{
+        left: 9vw;
+    }
+    to{
+        left: 55vw;
+    }
+}
+.mexeBRA{
+    width:  210px;
+    height: 70px;
+    position: absolute;
+    left: 1000px;
+    top: 210px;
+    animation: moverBRA 6s infinite alternate ease-out;
+}
+@keyframes moverBRA {
+    from{
+        left: 55vw;
+    }
+    to{
+        left: 9vw;
+    }
+}
+.mexeRA{
+    width:  140px;
+    height: 70px;
+    position: absolute;
+    left: 1000px;
+    top: 315px;
+    animation: moverRA 4s infinite alternate ease-out;
+}
+@keyframes moverRA {
+    from{
+        left: 60vw;
+    }
+    to{
+        left: 9vw;
+    }
+}
+.mexeZZ{
+    width:  140px;
+    height: 70px;
+    position: absolute;
+    left: 500px;
+    top: 515px;
+    animation: moverZZ 3s infinite alternate ease-out;
+}
+@keyframes moverZZ {
+    from{
+        left: 9vw;
+    }
+    to{
+        left: 55vw;
+    }
+}
+.mexeJAZZ{
+    width:  280px;
+    height: 70px;
+    position: absolute;
+    left: 1000px;
+    top: 20px;
+    animation: moverJAZZ 3.5s infinite alternate ease-out;
+}
+@keyframes moverJAZZ {
+    from{
+        left: 9vw;
+    }
+    to{
+        left: 55vw;
+    }
+}
+
+#tecla1, #tecla2, #tecla3, #tecla4, #tecla5, #tecla6, #tecla7, #tecla8, #tecla9, #tecla10{
+    height: 40px;
+    position: absolute;
+    right: 20px;
+    transition: right 0.1s;
+}
+#tecla1:hover, #tecla2:hover, #tecla3:hover, #tecla4:hover, #tecla5:hover, #tecla6:hover, #tecla7:hover, #tecla8:hover, #tecla9:hover, #tecla10:hover{
+    right: 0;
+}
+#tecla1{
+    top: 10px;
+    width: 310px;
+}
+#tecla2{
+    top: 70px;
+    width: 290px;
+}
+#tecla3{
+    top: 140px;
+    width: 280px;
+}
+#tecla4{
+    top: 210px;
+    width: 310px;
+}
+#tecla5{
+    top: 280px;
+    width: 290px;
+}
+#tecla6{
+    top: 350px;
+    width: 310px;
+}
+#tecla7{
+    top: 420px;
+    width: 290px;
+}
+#tecla8{
+    top: 490px;
+    width: 295px;
+}
+#tecla9{
+    top: 560px;
+    width: 280px;
+}
+#tecla10{
+    top: 630px;
+    width: 310px;
+}
+/*----------------------------------------------------------------------------------- INFORMAÇÕES ------------------*/
+.info{
+    color: white;
+    position: relative;
+    height: 350px;
+    margin-top: 40px;
+}
+.info>h4{
+    position: absolute;
+    left: 50%;
+    translate: -50%;
+}
+.info>h3{
+    position: absolute;
+    left: 50px;
+    top: 110px;
+    line-height: 1.6;
+}
+.containerPicto{
+    padding: 40px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    right: 30px;
+}
+.pictograma{
+    width: 30px;
+    height: 30px;
+    margin-left: 50px;
+}
+
+/*----------------------------------------------------------------------------------- DESCRIÇÃO FESTIVAL ------------*/
+#descricaoFestival{
+    color: white;
+    margin: 100px 150px;
+    font-size: 25px;
+    text-align: center;
+    font-family: "Montserrat", serif;
+}
+#descricaoFestival>p{
+    padding: 20px 0;
+}
+
+/*------------------------------------------------------------------------------------ ARTISTAS --------------------*/
+.containerArtista{
+    height: max-content;
+    margin-top: 70px;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#imgLuis{
+    width: 40vw;
+    height: 20vw;
+    position: absolute;
+    top: 50px;
+    right: 50px;
+}
+#imgMario{
+    width: 60vw;
+    height: 20vw;
+    position: absolute;
+    top: 50px;
+    left: 30px;
+}
+#imgMano{
+    width: 50vw;
+    height: 20vw;
+    position: absolute;
+    top: 50px;
+    right: 50px;
+}
+#imgChef{
+    width: 30vw;
+    height: 20vw;
+    position: absolute;
+    top: 50px;
+    left: 90px;
+}
+#imgMarta{
+    width: 23vw;
+    height: 20vw;
+    position: absolute;
+    top: 50px;
+    right: 500px;
+}
+#imgAntonio{
+    width: 23vw;
+    height: 20vw;
+    position: absolute;
+    top: 50px;
+    right: 50px;
+}
+#imgSusana{
+    width: 40vw;
+    height: 20vw;
+    position: absolute;
+    top: 50px;
+    left: 90px;
+}
+#imgTejo{
+    width: 40vw;
+    height: 20vw;
+    position: absolute;
+    top: 50px;
+    right: 150px;
+}
+#imgOrq{
+    width: 40vw;
+    height: 20vw;
+    position: absolute;
+    top: 80px;
+    left: 90px;
+}
+/*------------------------------------------------------------------------------------ direita --------------------*/
+.artistaDireita{
+    width: 97%;
+    height: 500px;
+    position: relative;
+}
+.artistaDireita>h3{
+    position: absolute;
+    font-size: 3vw;
+    top: 115px;
+    left: 80px;
+}
+.horarioDireita{
+    position: absolute;
+    font-size: 1.5vw;
+    top: 135px;
+    left: 250px;
+}
+.nomeDireita{
+    position: absolute;
+    font-size: 1.5vw;
+    top: 250px;
+    left: 80px;
+}
+.subnomeDireita{
+    position: absolute;
+    font-size: 1vw;
+    top: 300px;
+    left: 80px;
+    font-family: Montserrat, serif;
+}
+/*------------------------------------------------------------------------------------ esquerda --------------------*/
+.artistaEsquerda{
+    width: 97%;
+    height: 500px;
+    position: relative;
+}
+.artistaEsquerda>h3 {
+    position: absolute;
+    font-size: 3vw;
+    top: 115px;
+    right: 35vw;
+}
+.horarioEsquerda{
+    position: absolute;
+    font-size: 1.5vw;
+    top: 135px;
+    right: 10vw;
+}
+.nomeEsquerda{
+    position: absolute;
+    font-size: 1.5vw;
+    top: 250px;
+    left: 54%;
+}
+.subnomeEsquerda{
+    position: absolute;
+    font-size: 1vw;
+    top: 300px;
+    left: 54%;
+    font-family: Montserrat, serif;
+}
+.mapa{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 150px;
+    color: white;
+}
+.mapa>h2{
+    padding:40px;
+}

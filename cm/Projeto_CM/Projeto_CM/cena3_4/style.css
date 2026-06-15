@@ -1,0 +1,9 @@
+/* reserva estilos especificos da floresta */
+html,
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #0d2a23;
+}

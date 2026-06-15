@@ -1,0 +1,177 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+body {
+        background: #222222;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        height: 100vh;
+        padding-left: 60px;
+        overflow: hidden;
+}
+
+.conteudo {
+    color: #222222;
+    width: 40%;
+    max-width: 500px;
+    max-height: 60vh;
+    margin-left: auto;
+    margin-right: 80px;
+    padding-right: 50px;
+    position: relative;
+    z-index: 20;
+    background: transparent;
+}
+
+.title-center {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.question-text {
+    font-size: 1.2rem;
+    margin-bottom: 22px;
+    text-align: center;
+}
+
+.option-label {
+    text-align: center;
+    display: block;
+    margin: 0 auto 14px auto;
+    padding: 14px 16px;
+    cursor: pointer;
+    font-size: 1rem;
+    border: 2px solid #222222;
+    border-radius: 40px;
+}
+
+
+.option-label:hover{
+    opacity: 0.5;
+}
+
+.option-label input[type="radio"] {
+    display: none;
+}
+
+.option-label input[type="radio"]:checked + span {
+    font-weight: bold;
+}
+
+.option-label span {
+    display: block;
+    transition: 0.2s;
+}
+
+.button-row {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+.btn {
+    color: #222222;
+    background-color: transparent ;
+    border: 2px solid #222222;
+    padding: 10px 26px;
+    border-radius: 40px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.btn:hover{
+    opacity: 0.5;
+}
+
+.lanterna-container {
+    position: fixed;
+    left: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 180px;
+    height: 180px;
+    z-index: 10;   /* atrás do texto */
+    cursor: pointer;
+}
+
+.grupo-rotacao {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    transform-origin: center center;
+    pointer-events: none;
+}
+
+.lanterna {
+    width: 180px;
+    position: absolute;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.borda-lanterna {
+    position: absolute;
+    width: 115px;
+    left: 31.5%;
+    top: 300px;
+    transform: translateX(-50%);
+    z-index: 1; }
+
+
+    .cone-luz {
+        position: absolute;
+        top: 120px;
+        left: -308px;
+
+        width: 0;
+        height: 0;
+
+        border-bottom: 1600px solid rgba(255,255,255,0.75);
+        border-left: 365px solid transparent;
+        border-right: 365px solid transparent;
+
+        transform-origin: top left;
+        z-index: 2;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+
+
+
+@media (max-width: 1000px) {
+    .conteudo {
+        transform: scale(0.70) ;
+    }
+    .lanterna-container {
+        width: 120px;
+        height: 120px;
+    }
+
+    .grupo-rotacao {
+        width: 120px;
+        height: 120px;
+    }
+
+    .lanterna {
+        width: 120px;
+    }
+
+    .borda-lanterna {
+        width: 75px;
+        top: 200px;
+        left: 32%;
+    }
+
+    .cone-luz {
+        top: 80px;
+        left: -272%;
+    }
+}

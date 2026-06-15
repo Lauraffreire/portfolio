@@ -1,0 +1,248 @@
+#panelLeft {
+    position: absolute;
+    top: 0;
+    left: var(--stats-w);
+    width: var(--left-w);
+    height: var(--total-h);
+    overflow: hidden;
+    background: transparent;
+}
+
+/* Câmara e elementos não usados — escondidos */
+#videoEl     { display: none; }
+
+/*Ecrãs genéricos*/
+.screen {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .45s ease;
+}
+.screen.active { opacity: 1; pointer-events: all; }
+
+.q-header {
+    flex-shrink: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 150px 200px 40px;
+    gap: 28px;
+    position: relative;
+}
+
+/* escondidos */
+.qstep   { display: none; }
+.progbar { display: none; }
+
+.qtitle {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 900;
+    font-size: 200px;
+    line-height: 1.05;
+    text-align: center;
+    color: #6d2239;
+}
+
+.qdesc {
+    font-size: 30px;
+    color: rgba(109,34,57,0.5);
+    letter-spacing: .08em;
+}
+
+#s1 { justify-content: flex-start; }
+
+.curso-row {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    gap: 0;
+}
+
+.curso-card {
+    flex: 0 0 1215px;
+    width: 1215px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    cursor: default;
+    overflow: hidden;
+    background: transparent;
+    border-right: 1px solid rgba(109,34,57,.12);
+}
+.curso-card:last-child { border-right: none; }
+
+.curso-card.dm  { --c: #ffb800; }
+.curso-card.ei  { --c: #CDF564; }
+.curso-card.cd  { --c: #fa450e; }
+.curso-card.ext { --c: #F037A5; }
+
+.curso-card::before {
+    content: "";
+    position: absolute;
+    inset: 70px 45px;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0;
+    background: radial-gradient(
+            ellipse at center,
+            color-mix(in srgb, var(--c) 68%, transparent) 0%,
+            color-mix(in srgb, var(--c) 42%, transparent) 46%,
+            transparent 78%
+    );
+    filter: blur(54px);
+    transform: scale(0.92);
+    transition: opacity .25s ease, transform .25s ease;
+}
+.curso-card.hovered::before,
+.curso-card.sel::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.curso-card .inner {
+    display: flex; flex-direction: column;
+    align-items: center; gap: 20px;
+    position: relative; z-index: 1;
+}
+
+/* nome e código do curso com a cor do card */
+.cname {
+    font-family: 'Poppins', sans-serif;
+    font-size: 60px; font-weight: 800;
+    text-align: center; max-width: 1300px;
+    line-height: 1.15;
+    color: #6d2239;
+    text-shadow: none;
+}
+.ccode {
+    font-size: 24px;
+    color: #6d2239;
+    opacity: 0.6;
+    letter-spacing: .3em; text-transform: uppercase;
+}
+
+#s2 { justify-content: flex-start; }
+
+#qTop {
+    display: flex; flex-direction: column;
+    align-items: center; gap: 20px;
+    padding: 150px 200px 40px;
+    position: relative; z-index: 5; flex-shrink: 0;
+}
+
+.qtext {
+    font-family: 'Poppins', sans-serif;
+    font-size: 200px;
+    font-weight: 900;
+    text-align: center;
+    line-height: 1.05;
+    color: #6d2239;
+}
+
+#zonesRow {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    gap: 0;
+    position: relative;
+}
+
+.zone-block {
+    flex: 0 0 1620px;
+    width: 1620px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 32px;
+    position: relative; overflow: hidden; cursor: default;
+    background: transparent;
+    border-right: 1px solid rgba(109,34,57,.12);
+}
+.zone-block:last-child { border-right: none; }
+
+#zLeft  { --zc: #ffb800; }
+#zMid   { --zc: #CDF564; }
+#zRight { --zc: #ffb7b8; }
+
+.zone-block::before {
+    content: "";
+    position: absolute;
+    inset: 90px 70px;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0;
+    background: radial-gradient(
+            ellipse at center,
+            color-mix(in srgb, var(--zc) 68%, transparent) 0%,
+            color-mix(in srgb, var(--zc) 40%, transparent) 48%,
+            transparent 80%
+    );
+    filter: blur(66px);
+    transform: scale(0.92);
+    transition: opacity .25s ease, transform .25s ease;
+}
+.zone-block.zone-hover::before,
+.zone-block.zone-chosen::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.zone-label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 100px; font-weight: 900;
+    text-align: center; max-width: 1900px;
+    line-height: 1.2;
+    /* cor da zona */
+    color: #6d2239;
+    position: relative; z-index: 1;
+}
+
+#cdWrap,
+#cursoCdWrap {
+    position: absolute; bottom: 80px; left: 50%;
+    transform: translateX(-50%);
+    display: flex; flex-direction: column;
+    align-items: center; gap: 16px;
+    z-index: 20;  /* acima do canvas do efeito */
+}
+
+.cd-ring svg { display: none; }
+
+.cd-ring {
+    position: relative;
+    width: auto;
+    height: auto;
+}
+
+.cd-num {
+    position: static;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 160px;
+    font-weight: 900;
+    color: #6d2239;
+    line-height: 1;
+}
+
+.cd-hint {
+    font-family: 'Poppins', sans-serif;
+    font-size: 50px;
+    font-weight: 900;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: #6d2239;
+    opacity: 0.5;
+}
+

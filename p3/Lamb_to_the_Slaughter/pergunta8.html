@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pergunta 8</title>
+    <link rel="stylesheet" href="css/warning.css">
+    <script src="js/warning.js" defer></script>
+    <script src="js/p8.js" defer></script>
+    <script src="js/script.js" defer></script>
+    <link rel="stylesheet" href="css/p8.css">
+</head>
+
+<body>
+<div class="screen-warning" aria-live="polite">
+    <div class="screen-warning__content">
+        <img
+                src="img/logo.png"
+                alt="Logo"
+                class="screen-warning__logo"
+        >
+        <p class="screen-warning__text">
+            É necessário um ecrã maior para visualizar este website.
+        </p>
+    </div>
+</div>
+
+<canvas id="bgCanvas"></canvas>
+<canvas id="bloodCanvas"></canvas>
+
+<div class="main-wrapper">
+    <div class="card">
+        <h2 class="title-center">Pergunta 8 / 10</h2>
+        <p class="question-text">
+            <span class="cima">Precisas de lidar com um</span>
+            <span class="baixo">crime, como procedes?</span>
+        </p>
+
+        <form>
+            <div class="options">
+                <label class="option-label">
+                    <input type="radio" name="q8" value="0">
+                    <span class="oa">Preferia manter-me longe disso.</span>
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q8" value="5">
+                    <span class="ob">Agir impulsivamente, mas com cabeça fria.</span>
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q8" value="10">
+                    <span class="oc">Algo que passasse despercebido.</span>
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q8" value="8">
+                    <span class="od">Um plano bem estruturado.</span>
+                </label>
+            </div>
+        </form>
+
+        <div class="button-row">
+            <button class="btn" type="button" onclick="nextQuestion('q8','pergunta9.html')"> > </button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

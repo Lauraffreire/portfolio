@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado</title>
+    <script src="js/warning.js" defer></script>
+    <link rel="stylesheet" href="css/resultado.css">
+    <link rel="stylesheet" href="css/warning.css">
+    <script src="js/script.js" defer></script>
+    <script src="js/resultado.js" defer></script>
+</head>
+<body>
+
+<div class="screen-warning" aria-live="polite">
+    <div class="screen-warning__content">
+        <img src="img/logo.png" alt="Logo" class="screen-warning__logo">
+        <p class="screen-warning__text">
+            É necessário um ecrã maior para visualizar este website.
+        </p>
+    </div>
+</div>
+
+<video id="result-video" class="bg-video" playsinline muted></video>
+
+<img src="img/rotulo.png" alt="Rótulo" class="rotulo">
+
+
+    <div class="card-content">
+        <h3 class="result-percentage" id="percent">0% Mary</h3>
+        <h2 id="result-title"></h2>
+        <div id="result-text"></div>
+    </div>
+
+    <button class="btn" onclick="resetQuiz()">Refazer quiz</button>
+
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Pergunta 2</title>
+    <link rel="stylesheet" href="css/warning.css">
+    <script src="js/warning.js" defer></script>
+    <script src="js/p2.js" defer></script>
+    <script src="js/script.js" defer></script>
+    <link rel="stylesheet" href="css/p2.css">
+</head>
+<body>
+<div class="screen-warning" aria-live="polite">
+    <div class="screen-warning__content">
+        <img src="img/logo.png" alt="Logo" class="screen-warning__logo">
+        <p class="screen-warning__text">
+            É necessário um ecrã maior para visualizar este website.
+        </p>
+    </div>
+</div>
+
+<canvas id="blurCanvas"></canvas>
+
+<div class="main-wrapper">
+    <div class="card">
+        <h2 class="title-center">Pergunta 2 / 10</h2>
+        <p class="question-text">
+            Tens uma informação secreta que podia mudar tudo. O que fazes?
+        </p>
+
+        <form>
+            <div class="options">
+                <label class="option-label">
+                    <input type="radio" name="q2" value="10">
+                    <span><strong>A)</strong> Analiso como essa informação pode-me ser vantajosa.</span>
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q2" value="0">
+                    <span><strong>B)</strong> Partilho de forma cuidadosa.</span>
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q2" value="6">
+                    <span><strong>C)</strong> Guardo até perceber o momento certo.</span>
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q2" value="8">
+                    <span><strong>D)</strong> Finjo desinteresse para não levantar suspeitas.</span>
+                </label>
+            </div>
+        </form>
+
+        <div class="button-row">
+            <button class="btn" type="button" onclick="nextQuestion('q2','pergunta3.html')">Próxima</button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

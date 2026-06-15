@@ -1,0 +1,501 @@
+:root {
+    --bg-color: #000;
+    --text-color: #fff;
+    --main-font: 2.2rem;
+    --p-font: 1.1rem;
+    /*--------CORES---------*/
+    --cor-amarela: #f4bd10;
+    --cor-laranja: #ea7f0f;
+    --cor-roxa: #461d5b;
+    --cor-branca: #fff;
+    --cor-preta: #000;
+    --cor-box: #e1e1e1;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Montserrat, sans-serif;
+    text-decoration: none;
+    list-style: none;
+    scroll-behavior: smooth;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    color: white;
+    background: linear-gradient(#000 5%, #fff 9%);
+}
+
+.icons {
+    display: inline-block;
+}
+
+.icons i {
+    color: var(--cor-branca);
+    font-size: 24px;
+    margin-left: 15px;
+}
+
+.icons i:hover {
+    opacity: 0.7;
+}
+
+.text-loop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    z-index: 100;
+}
+
+.text-loop img {
+    width: 100%;
+    height: auto;
+}
+
+.linha1, .linha2 {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+/*----- FIM HEADER/NAVBAR --------*/
+
+section {
+    padding: 50px 8%;
+}
+
+
+#shop2 {
+    color: var(--cor-preta);
+}
+
+/*----- TOP CONTAINER ------------*/
+.top-container {
+    display: flex;
+    max-width: 1400px;
+    margin: 0 auto;
+    gap: 10px;
+}
+
+.top-box {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    border: 1px solid #000;
+}
+
+.top-info {
+    flex: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    padding: 20px;
+    background-color: #000;
+}
+
+.top-info button {
+    margin-top: 5px;
+    display: inline-block;
+    width: 70%;
+    padding: 5px 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 50px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.top-info button:hover {
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #fff;
+}
+
+.top-img {
+    flex: 65%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.top-img img {
+    max-width: 100%;
+    height: auto;
+}
+
+/*----------- CONTAINER ----------*/
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+    padding-top: 2rem;
+    margin: 0 auto;
+    max-width: 1400px;
+}
+
+/* Carta do produto */
+.box {
+    width: 350px;
+    height: 475px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.box:hover {
+    transform: scale(1.05);
+}
+
+/* Contêiner da imagem */
+.image-container {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+}
+
+.image-container img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+/* Informações do produto */
+.product-info {
+    padding: 15px;
+    text-align: justify;
+    cursor: auto;
+}
+
+.product-info h4 {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0 5px;
+    color: #333;
+}
+
+.product-info p {
+    font-size: 14px;
+    color: #666;
+    margin: 5px 0;
+}
+
+.product-info .price {
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+    margin: 5px 0;
+}
+
+.product-info button {
+    margin-top: 10px;
+    justify-self: right;
+    display: inline-block;
+    width: 30%;
+    padding: 5px 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: 1px solid #000;
+    border-radius: 50px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.product-info button:hover {
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #000;
+}
+
+/* Opções de cores */
+.color-options {
+    display: flex;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.color {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+}
+
+.color.black {
+    background-color: #000;
+}
+
+.color.white {
+    background-color: #fff;
+    border: 1px solid #000;
+}
+
+.product-details {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.gender-select select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.shop2 h2{
+    color: black;
+}
+
+
+/*----- TOP CONTAINER2 ------------*/
+.top-container2 {
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 10px;
+}
+
+.top-box2 {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    border: 1px solid #000;
+}
+
+.top-info2 {
+    flex: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #000;
+}
+
+.top-info2 button {
+    margin-top: 5px;
+    display: inline-block;
+    width: 30%;
+    padding: 5px 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 50px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.top-info2 button:hover {
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #fff;
+}
+
+.top-img2 {
+    flex: 65%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.top-img2 img {
+    max-width: 100%;
+    height: auto;
+}
+
+.top-shop2 h2{
+    color: black;
+    justify-self: center;
+    padding-bottom: 20px;
+}
+
+
+/* ---------- CARROSSEL -----------------*/
+section .container3{
+    color: black;
+}
+
+.container-slider{
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.container-images{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 700px;
+}
+
+.slider{
+    opacity: 0;
+    transition: opacity .2s;
+    position: absolute;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.on{
+    opacity: 1;
+}
+
+.prev-btn, .next-btn{
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.prev-btn img, .next-btn img{
+    width: 100%;
+    height: 100%;
+}
+
+.container3 h2{
+    color: black;
+    justify-self: center;
+    max-width: 300px;
+}
+
+
+/*---------- LAST SECTION --------------*/
+.last-section h1{
+    color: black;
+    justify-self: center;
+}
+
+.video-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+video {
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+/* ------------ FOOTER ------------ */
+footer {
+    background-color: #111;
+}
+
+.footer-container {
+    width: 100%;
+    padding: 70px 30px 20px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+}
+
+.social-icons a {
+    background-color: white;
+    text-decoration: none;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 50%;
+}
+
+.social-icons a i {
+    font-size: 2em;
+    color: black;
+    opacity: 0.9;
+}
+
+.social-icons a:hover {
+    background-color: #111;
+    transition: 0.5s;
+}
+
+.social-icons a:hover i {
+    color: white;
+    transition: 0.5s;
+}
+
+.footer-nav {
+    margin: 30px 0;
+}
+
+.footer-nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+.footer-nav ul li a {
+    color: white;
+    text-decoration: none;
+    margin: 20px;
+    font-size: 15px;
+    opacity: 0.7;
+    transition: 0.5s;
+}
+
+.footer-nav ul li a:hover {
+    opacity: 1;
+}
+
+.footer-bottom {
+    background-color: black;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer-bottom p {
+    color: white;
+}
+
+.footer-bottom a {
+    color: white;
+    text-decoration: none;
+}
+
+.designer {
+    opacity: 0.7;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 400;
+    margin: 0 5px;
+}

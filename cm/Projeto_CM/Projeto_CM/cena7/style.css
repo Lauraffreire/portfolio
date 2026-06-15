@@ -1,0 +1,105 @@
+/* define o jardim, cursor de pincel e transicao das cartas */
+html,body{margin:0;width:100%;height:100%;overflow:hidden;user-select:none;-webkit-user-select:none;}
+:root{--paint-red:#b13a35;}
+svg{
+  position:fixed;
+  inset:0;
+  width:110%;
+  height:100%;
+  left:-5%;
+  display:block;
+  object-fit:cover;
+}
+
+#rosas > g,.st14{cursor:none;}
+#rosas > g .st14,#rosas > g .st18,#rosas > g .cls-32,.st14{transition:fill .3s;}
+.vermelha{fill:var(--paint-red) !important;}
+#rosas > g.vermelha .cls-32,#rosas > g.vermelha .st14,#rosas > g.vermelha .st18{fill:var(--paint-red) !important;}
+#balde,.st16{cursor:none;}
+#rosas > g,#balde,.st16{touch-action:none;}
+#balde{
+  filter:drop-shadow(0 0 2px rgba(255,230,166,.42));
+  animation:bucketGlowPulse 1.4s ease-in-out infinite alternate;
+}
+@keyframes bucketGlowPulse{
+  from{filter:drop-shadow(0 0 2px rgba(255,230,166,.42));}
+  to{filter:drop-shadow(0 0 3.5px rgba(255,230,166,.52));}
+}
+svg{cursor:none;}
+#garden-svg-object{
+  width:110vw;
+  height:100vh;
+  margin-left:-5vw;
+  display:block;
+  border:0;
+}
+
+
+#pincel-cursor{
+  position:fixed;
+  pointer-events:none;
+  z-index:999;
+  width:60px;
+  height:auto;
+  transform:translate(-15%,-85%);
+  display:none;
+  image-rendering:auto;
+  user-select:none;
+  -webkit-user-drag:none;
+}
+
+#tinta-bar{
+  position:fixed;
+  left:50%;
+  bottom:22px;
+  width:min(220px,42vw);
+  height:14px;
+  transform:translateX(-50%);
+  z-index:80;
+  border:2px solid rgba(32,22,14,.72);
+  border-radius:999px;
+  background:rgba(255,255,255,.28);
+  overflow:hidden;
+  box-shadow:0 4px 14px rgba(0,0,0,.28);
+  pointer-events:none;
+}
+#tinta-bar-fill{
+  position:absolute;
+  left:0;
+  top:0;
+  bottom:0;
+  width:0%;
+  background:var(--paint-red);
+  transition:width .22s ease;
+}
+
+
+#card-reveal{
+  position:fixed;inset:0;z-index:100;pointer-events:none;display:none;
+}
+#card-reveal.active{display:block;}
+#card-backdrop{
+  position:absolute;inset:0;background:#000;opacity:0;
+  transition:opacity 0.5s;
+}
+#card-layer{
+  position:absolute;inset:0;overflow:hidden;
+}
+.cr-card{
+  position:absolute;
+  transform-origin:center center;
+  opacity:0;
+  animation:cardDrop 0.38s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+.cr-card img{width:100%;height:100%;object-fit:contain;display:block;}
+@keyframes cardDrop{
+  from{opacity:0;transform:rotate(var(--r)) translateY(-20px) scale(0.86);}
+  to{opacity:1;transform:rotate(var(--r)) translateY(0) scale(1);}
+}
+.cr-card.revealing{
+  animation:cardReveal 0.36s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+@keyframes cardReveal{
+  from{opacity:1;transform:rotate(var(--r)) scale(1);}
+  to{opacity:0;transform:rotate(var(--r)) scale(1.14);}
+}

@@ -1,0 +1,37 @@
+:root {
+    --text: #ffffff;
+    --muted: rgba(255,255,255,0.45);
+    --user-color: #F037A5;
+
+    --total-w:  9720px;
+    --total-h:  1920px;
+    --stats-w:  2430px;  
+    --left-w:   4860px;  
+    --right-w:  2430px;  
+    --header-h: 140px;  
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    font-family: "Poppins ExtraBold", sans-serif;
+    color: var(--text);
+    background: #000;
+}
+
+#stage {
+    position: absolute;
+    top: 0; left: 0;
+    width: var(--total-w);
+    height: var(--total-h);
+    transform-origin: top left;
+    background: #f8eee5;
+}
+
+#stage.graph-fullscreen #panelLeft {
+    opacity: 0;
+    pointer-events: none;
+}

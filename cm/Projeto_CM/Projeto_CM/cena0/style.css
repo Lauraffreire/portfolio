@@ -1,0 +1,60 @@
+/* define o enquadramento visual da cena inicial */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-purple: #2c1446;
+}
+
+body {
+    background: var(--bg-purple);
+    overflow-x: hidden;
+    font-family: Georgia, serif;
+}
+
+
+#scroll-driver {
+    height: 300vh;
+}
+
+
+#sticky-stage {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+
+#scene-intro {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#title-anchor {
+    width: min(80vw, 820px);
+    position: relative;
+    will-change: transform;
+}
+
+#frame-img {
+    width: 100%;
+    display: block;
+}
+
+#title-img {
+    position: absolute;
+    width: 70%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -54%);
+}

@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", sans-serif;
+}
+
+body {
+    overflow: hidden;
+    background-color: #0b121c;
+    color: #1b232f;
+    padding: 20px;
+}
+
+#blurCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+    pointer-events: none;
+
+    backdrop-filter: blur(15px);
+    -webkit-mask-image: radial-gradient(circle 80px at var(--mx) var(--my), transparent 0%, black 100%);
+    mask-image: radial-gradient(circle 120px at var(--mx) var(--my), transparent 0%, black 100%);
+}
+
+.main-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    width: 100%;
+    max-width: 900px;
+    padding: 50px 20px;
+    justify-content: center;
+}
+
+.title-center {
+    color: #4a6285;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 30px;
+}
+
+.question-text {
+    color: #4a6285;
+    font-size: 18px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.option-label {
+    color: #b2c3dd;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+    padding: 10px 40px;
+    width: 600px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.option-label:hover {
+    opacity: 0.5;
+}
+
+.option-label span {
+    display: block;
+    transition: 0.2s;
+}
+
+.option-label input[type="radio"]:checked + span {
+    color: #4a6285;
+}
+
+.option-label input[type="radio"] {
+    display: none;
+}
+
+.button-row {
+    margin-top: 28px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn {
+    border: 2px solid #4a6285;
+    color: #4a6285;
+    background: transparent;
+    padding: 10px 26px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+    margin-right: 60px;
+    border-radius: 10px;
+    width: 120px;
+}
+
+.btn:hover {
+    opacity: 0.5;
+}

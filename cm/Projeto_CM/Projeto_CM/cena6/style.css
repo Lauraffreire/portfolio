@@ -1,0 +1,338 @@
+/* define a mesa de cha, sidebar, objetos e portal */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+  user-select: none;
+}
+
+
+#bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+#bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+}
+
+
+#scene {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+#scene.scene-zooming {
+  transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+
+#sidebar {
+  position: relative;
+  z-index: 10;
+  width: 200px;
+  min-width: 200px;
+  height: 100%;
+  background: rgba(205, 170, 115, 0.93);
+  border-right: 3px solid rgba(139, 100, 50, 0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0 60px;
+  gap: 5px;
+  box-shadow: 3px 0 15px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(5px);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+#sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+#sidebar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+#sidebar::-webkit-scrollbar-thumb {
+  background: rgba(139, 100, 50, 0.5);
+  border-radius: 2px;
+}
+
+.sidebar-label {
+  font-size: 10px;
+  color: rgba(60, 35, 10, 0.75);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-style: italic;
+  margin-bottom: 4px;
+}
+
+.item-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  cursor: grab;
+  padding: 6px 5px;
+  border-radius: 9px;
+  transition: background 0.2s, transform 0.15s;
+  width: 178px;
+  touch-action: none;
+}
+
+.item-slot:hover {
+  background: rgba(255, 255, 255, 0.35);
+  transform: scale(1.06);
+}
+
+.item-slot:active {
+  cursor: grabbing;
+  transform: scale(0.95);
+}
+
+.item-slot img {
+  width: 104px;
+  height: 104px;
+  object-fit: contain;
+  pointer-events: none;
+  filter: drop-shadow(1px 2px 3px rgba(0, 0, 0, 0.3));
+}
+
+.item-slot span {
+  font-size: 11px;
+  color: rgba(55, 30, 8, 0.85);
+  text-align: center;
+  font-style: italic;
+}
+
+
+#canvas-area {
+  position: relative;
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+}
+
+
+#mesa-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(90deg);
+  height: min(145vw, 115vh);
+  width: auto;
+  pointer-events: none;
+  z-index: 2;
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.4));
+}
+
+
+.placed-item {
+  position: absolute;
+  cursor: grab;
+  z-index: 5;
+  transform-origin: center center;
+}
+
+
+.placed-item:hover {
+  z-index: 20;
+}
+
+.placed-item.rotating {
+  cursor: grabbing;
+}
+
+
+.placed-item .rotate-handle {
+  position: absolute;
+  top: -9px;
+  right: -9px;
+  width: 15px;
+  height: 15px;
+  background: rgba(30, 30, 30, 0.75);
+  border-radius: 50%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  z-index: 60;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+  backdrop-filter: blur(2px);
+  transition: background 0.15s, transform 0.15s;
+}
+
+.placed-item .rotate-handle svg {
+  width: 9px;
+  height: 9px;
+  display: block;
+}
+
+.placed-item:hover .rotate-handle {
+  display: flex;
+}
+
+.placed-item .rotate-handle:hover {
+  background: rgba(60, 60, 60, 0.95);
+  transform: scale(1.15);
+  cursor: grab;
+}
+
+.placed-item.dragging {
+  cursor: grabbing;
+  z-index: 30;
+}
+
+.placed-item img {
+  pointer-events: none;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: none;
+}
+
+
+#canvas-area.drag-over #mesa-img {
+  filter: drop-shadow(0 10px 30px rgba(255, 210, 60, 0.7));
+}
+
+
+#trash {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 52px;
+  height: 52px;
+  background: rgb(42, 85, 52);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  z-index: 200;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+  transition: transform 0.2s, background 0.2s;
+}
+
+#trash.drag-over {
+  transform: scale(1.25);
+}
+
+
+#hint {
+  position: fixed;
+  bottom: 22px;
+  left: calc(200px + 50%);
+  transform: translateX(-50%);
+  background: rgb(13, 30, 24);
+  color: #fff;
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-style: italic;
+  backdrop-filter: blur(4px);
+  pointer-events: none;
+  opacity: 0.85;
+  z-index: 100;
+}
+
+
+.portal-cup {
+  cursor: pointer !important;
+  filter:
+    drop-shadow(0 0 8px rgba(255, 244, 184, 0.85))
+    drop-shadow(0 0 18px rgba(122, 227, 194, 0.45));
+  animation: portalCupGlow 1.4s ease-in-out infinite alternate;
+}
+
+.portal-cup .coffee-portal {
+  position: absolute;
+  border-radius: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 10;
+  clip-path: ellipse(33% 50%);
+  transform: translateY(-5px);
+}
+
+.portal-cup .coffee-portal img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.portal-cup .coffee-portal img {
+  animation: rotatePortal 6s linear infinite;
+}
+
+@keyframes rotatePortal {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes portalCupGlow {
+  from {
+    filter:
+      drop-shadow(0 0 5px rgba(255, 244, 184, 0.68))
+      drop-shadow(0 0 12px rgba(122, 227, 194, 0.32));
+  }
+  to {
+    filter:
+      drop-shadow(0 0 11px rgba(255, 244, 184, 0.95))
+      drop-shadow(0 0 24px rgba(122, 227, 194, 0.58));
+  }
+}
+
+
+#portal-transition {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  background: #000;
+}
+
+#portal-transition.active {
+  pointer-events: all;
+}
+
+#portal-transition.visible {
+  opacity: 1;
+  transition: opacity 0.7s ease;
+}
+
+#portal-zoom {
+  width: 100%;
+  height: 100%;
+}
+
+#portal-zoom img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
