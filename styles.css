@@ -752,6 +752,10 @@ h1 {
     grid-template-columns: 1fr;
   }
 
+  .project-hero .pressure-title {
+    white-space: normal;
+  }
+
   .project-description {
     grid-template-columns: 1fr;
   }

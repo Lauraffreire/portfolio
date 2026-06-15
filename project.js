@@ -60,14 +60,14 @@ function buildStage(item) {
       <div class="project-actions">
         <a class="open-source" href="${item.src}" target="_blank" rel="noreferrer">Abrir site</a>
       </div>
-      ${demoVideo ? `<video class="project-video" src="${demoVideo}" controls muted playsinline></video>` : ""}
+      ${demoVideo ? `<video class="project-video" src="${demoVideo}" controls playsinline></video>` : ""}
     `;
     return;
   }
 
   if (["mp4", "webm", "mov"].includes(extension)) {
     stage.innerHTML = `
-      <video class="project-video" src="${item.src}" controls autoplay muted playsinline></video>
+      <video class="project-video" src="${item.src}" controls autoplay playsinline></video>
     `;
     return;
   }
@@ -206,7 +206,7 @@ function appendProjectVideo(item) {
   const videoBlock = document.createElement("section");
   videoBlock.className = "project-extra";
   videoBlock.innerHTML = `
-    <video class="project-video" src="${item.video}" controls muted playsinline></video>
+    <video class="project-video" src="${item.video}" controls playsinline></video>
   `;
   stage.append(videoBlock);
 }
