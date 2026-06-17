@@ -172,7 +172,14 @@ const portfolioProjects = {
       role: "Interaction design, data visualization, interface design",
       tools: ["PhpStorm"],
     },
-    description: "\"Between Lines\" is an interactive installation that explores the relationship between technology, data, and human behavior. The experience collects users' preferences through interactive questions and transforms those answers into a dynamic data visualization. The project aims to make statistical analysis more accessible and engaging, encouraging active participation and spatial exploration through body movement."
+    description: "\"Between Lines\" is an interactive installation that explores the relationship between technology, data, and human behavior. The experience collects users' preferences through interactive questions and transforms those answers into a dynamic data visualization. The project aims to make statistical analysis more accessible and engaging, encouraging active participation and spatial exploration through body movement.",
+    gallery: [
+      "p4/1.png",
+      "p4/2.png",
+      "p4/3.png",
+      "p4/4.png",
+      "p4/5.png"
+    ]
   },
   "projeto-cm": {
     title: "Alice in Wonderland",

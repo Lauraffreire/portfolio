@@ -638,6 +638,22 @@ h1 {
   display: block;
 }
 
+.project-gallery--between-lines {
+  grid-template-columns: 1fr;
+  gap: 34px;
+  width: min(1120px, 100%);
+  justify-self: center;
+}
+
+.project-gallery--between-lines a {
+  min-height: 0;
+}
+
+.project-gallery--between-lines img {
+  height: auto;
+  min-height: 0;
+}
+
 .project-gallery--safelink {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   justify-self: center;

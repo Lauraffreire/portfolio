@@ -60,8 +60,12 @@ function buildStage(item) {
       <div class="project-actions">
         <a class="open-source" href="${item.src}" target="_blank" rel="noreferrer">Abrir site</a>
       </div>
-      ${demoVideo ? `<video class="project-video" src="${demoVideo}" controls playsinline></video>` : ""}
     `;
+    appendProjectGallery(item);
+    appendProjectVideo({
+      ...item,
+      video: demoVideo
+    });
     return;
   }
 
@@ -188,9 +192,13 @@ function appendProjectGallery(item) {
   }
 
   const gallery = document.createElement("section");
-  gallery.className = projectId === "safelink"
-    ? "project-gallery project-gallery--safelink"
-    : "project-gallery";
+  const galleryClass = projectId === "safelink"
+    ? "project-gallery--safelink"
+    : projectId === "between-lines"
+      ? "project-gallery--between-lines"
+      : "";
+
+  gallery.className = ["project-gallery", galleryClass].filter(Boolean).join(" ");
   gallery.setAttribute("aria-label", "Project images");
   gallery.innerHTML = item.gallery
     .map((image, index) => `<a href="${image}" target="_blank" rel="noreferrer"><img src="${image}" alt="${item.title} ${index + 1}"></a>`)
